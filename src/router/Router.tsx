@@ -1,9 +1,9 @@
 import { memo, VFC } from "react";
 import { Switch, Route } from "react-router-dom"
 
-import { SignUp } from "../components/pages/userAuth/SignUp";
-import { Home } from "../components/pages/Home"
-import { SignIn } from "../components/pages/userAuth/SignIn";
+import { SignUp } from "components/pages/userAuth/SignUp";
+import { Home } from "components/pages/Home"
+import { SignIn } from "components/pages/userAuth/SignIn";
 
 export const Router:VFC = memo(() => {
   return (
