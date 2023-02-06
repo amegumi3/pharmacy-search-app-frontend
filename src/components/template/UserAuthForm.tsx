@@ -18,7 +18,7 @@ export const UserAuthForm:VFC<Props> = memo((props) => {
           <Stack spacing={4} py={5} >
             {children}
           </Stack>
-          <PrimaryButton>登録</PrimaryButton>
+          <PrimaryButton >登録</PrimaryButton>
         </Stack>
       </Box>
     </Flex>
