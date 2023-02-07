@@ -1,11 +1,14 @@
 import { Box, Button, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
+import Cookies from "js-cookie";
 import { signUp } from "lib/api/auth";
-import { ChangeEvent, memo, MouseEvent, useState, VFC } from "react";
+import { AuthContext } from "providers/Auth";
+import { ChangeEvent, memo, MouseEvent, useContext, useState, VFC } from "react";
 import { useHistory } from "react-router-dom";
 import { SignUpParams } from "types/api";
 
 export const SignUp: VFC = memo(() => {
   const history = useHistory();
+  const {setIsSignedIn, setCurrentUser} = useContext(AuthContext);
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -28,6 +31,13 @@ export const SignUp: VFC = memo(() => {
       console.log(res);
 
       if (res.status === 200) {
+        Cookies.set("_access_token", res.headers["access-token"])
+        Cookies.set("_client", res.headers["client"])
+        Cookies.set("_uid", res.headers["uid"])
+
+        setIsSignedIn(true)
+        setCurrentUser(res.data.data)
+
         alert("登録しました");
         history.push("/");
       } else {
