@@ -38,7 +38,7 @@ export const Header: VFC = memo(() => {
 
   const onClickSignIn = useCallback(() => history.push("/signin"), [history]);
 
-  const onClickSignOut = async (e: MouseEvent) => {
+  const onClickSignOut = useCallback(async (e: MouseEvent) => {
     try {
       const res = await signOut()
 
@@ -57,7 +57,7 @@ export const Header: VFC = memo(() => {
     } catch (err) {
       console.log(err)
     }
-  }
+  },[history, setIsSignedIn]);
 
   return (
     <Flex as="nav" bg="blue.100" padding={{ base: 3, md: 5 }} justify="space-between">

@@ -1,14 +1,14 @@
-import { Box, Button, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Heading, Input, Stack, Text } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import { signUp } from "lib/api/auth";
 import { AuthContext } from "providers/Auth";
-import { ChangeEvent, memo, MouseEvent, useContext, useState, VFC } from "react";
+import { ChangeEvent, memo, MouseEvent, useCallback, useContext, useState, VFC } from "react";
 import { useHistory } from "react-router-dom";
 import { SignUpParams } from "types/api";
 
 export const SignUp: VFC = memo(() => {
   const history = useHistory();
-  const {setIsSignedIn, setCurrentUser} = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -19,35 +19,40 @@ export const SignUp: VFC = memo(() => {
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
   const onChangePasswordConfirmation = (e: ChangeEvent<HTMLInputElement>) => setPasswordConfirmation(e.target.value);
 
-  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
-    const params: SignUpParams = {
-      name: name,
-      email: email,
-      password: password,
-      passwordConfirmation: passwordConfirmation,
-    };
-    try {
-      const res = await signUp(params);
-      console.log(res);
+  const onCLickSignIn = useCallback(() => history.push("/signin"), [history]);
 
-      if (res.status === 200) {
-        Cookies.set("_access_token", res.headers["access-token"])
-        Cookies.set("_client", res.headers["client"])
-        Cookies.set("_uid", res.headers["uid"])
+  const handleSubmit = useCallback(
+    async (e: MouseEvent<HTMLButtonElement>) => {
+      const params: SignUpParams = {
+        name: name,
+        email: email,
+        password: password,
+        passwordConfirmation: passwordConfirmation,
+      };
+      try {
+        const res = await signUp(params);
+        console.log(res);
 
-        setIsSignedIn(true)
-        setCurrentUser(res.data.data)
+        if (res.status === 200) {
+          Cookies.set("_access_token", res.headers["access-token"]);
+          Cookies.set("_client", res.headers["client"]);
+          Cookies.set("_uid", res.headers["uid"]);
 
-        alert("登録しました");
-        history.push("/");
-      } else {
+          setIsSignedIn(true);
+          setCurrentUser(res.data.data);
+
+          alert("登録しました");
+          history.push("/");
+        } else {
+          alert("登録に失敗しました");
+        }
+      } catch (err) {
         alert("登録に失敗しました");
+        console.log(err);
       }
-    } catch (err) {
-      alert("登録に失敗しました");
-      console.log(err);
-    }
-  };
+    },
+    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn]
+  );
 
   return (
     <Flex align="center" justify="center" height="100vh">
@@ -64,6 +69,9 @@ export const SignUp: VFC = memo(() => {
           <Button disabled={!name || !email || !password || !passwordConfirmation ? true : false} onClick={handleSubmit}>
             登録
           </Button>
+          <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={onCLickSignIn}>
+            ログインはこちら
+          </Text>
         </Stack>
       </Box>
     </Flex>

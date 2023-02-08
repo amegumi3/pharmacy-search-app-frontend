@@ -1,8 +1,8 @@
-import { Box, Button, Divider, Flex, Heading, Input, Stack } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, Heading, Input, Stack, Text } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import { signIn } from "lib/api/auth";
 import { AuthContext } from "providers/Auth";
-import { ChangeEvent, memo, MouseEvent, useContext, useState, VFC } from "react";
+import { ChangeEvent, memo, MouseEvent, useCallback, useContext, useState, VFC } from "react";
 import { useHistory } from "react-router-dom";
 import { SignInParams } from "types/api";
 
@@ -15,7 +15,9 @@ export const SignIn: VFC = memo(() => {
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
   const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
-  const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
+  const onCLickSignUp = useCallback(() => history.push("/signup"), [history]);
+
+  const handleSubmit = useCallback(async (e: MouseEvent<HTMLButtonElement>) => {
     const params: SignInParams = {
       email: email,
       password: password,
@@ -41,7 +43,8 @@ export const SignIn: VFC = memo(() => {
       console.log(err);
       alert("ログインに失敗しました");
     }
-  };
+  },[email, history, password, setCurrentUser, setIsSignedIn]);
+  
   return (
     <Flex align="center" justify="center" height="100vh">
       <Box bg="white" w="md" p={4} borderRadius="md">
@@ -55,6 +58,9 @@ export const SignIn: VFC = memo(() => {
           <Button disabled={!email || !password ? true : false} onClick={handleSubmit}>
             ログイン
           </Button>
+          <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={onCLickSignUp}>
+            登録はこちら
+          </Text>
         </Stack>
       </Box>
     </Flex>
