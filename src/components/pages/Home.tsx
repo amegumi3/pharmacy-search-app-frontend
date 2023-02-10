@@ -1,10 +1,17 @@
-import { Box, Button, Flex, Heading, Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading,   Input, Stack, Text} from "@chakra-ui/react";
 import { Card } from "components/organisms/Card";
+// import { Card } from "components/organisms/Card";
+import { useSearchPharmacies } from "hooks/useSearchPharmacies";
 import { AuthContext } from "providers/Auth";
-import { memo, useContext, VFC } from "react";
+import { ChangeEvent, memo, useContext,  useState, VFC } from "react";
 
 export const Home: VFC = memo(() => {
+  const { getPharmacies, pharmacies } = useSearchPharmacies();
   const { currentUser, isSignedIn } = useContext(AuthContext);
+  const [searchWord, setSearchWord] = useState<string>("");
+  const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => setSearchWord(e.target.value);
+
+  const onClickSearch = () =>  getPharmacies(searchWord);
   return (
     <>
       <Box
@@ -25,15 +32,17 @@ export const Home: VFC = memo(() => {
               </Stack>
               <Box m={4}>
                 <Flex>
-                  <Input />
-                  <Button ml={4}>検索</Button>
+                  <Input value={searchWord} onChange={onChangeInput} />
+                  <Button onClick={onClickSearch} disabled={!searchWord} ml={4}>
+                    検索
+                  </Button>
                 </Flex>
               </Box>
             </Box>
           </Flex>
         </Flex>
       </Box>
-      <Card />
+      <Card   pharmacies={pharmacies}/>
     </>
   );
 });
