@@ -2,6 +2,7 @@ import { Box, Button, Heading, HStack, Image, Spacer, Stack, Text, VStack } from
 import { memo, VFC } from "react";
 
 export const Card: VFC = memo(() => {
+  
   return (
     <>
       <VStack mt={7}>

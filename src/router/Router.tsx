@@ -6,6 +6,7 @@ import { SignUp } from "components/pages/userAuth/SignUp";
 import { SignIn } from "components/pages/userAuth/SignIn";
 import { HeaderLayout } from "components/template/HeaderLayout";
 import { AuthProvider } from "providers/Auth";
+import { Import } from "components/pages/Import";
 
 export const Router:VFC = memo(() => {
   return (
@@ -15,6 +16,7 @@ export const Router:VFC = memo(() => {
           <Route exact path="/" component={Home} />
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/import" component={Import} />
         </HeaderLayout>
       </AuthProvider>
     </Switch>

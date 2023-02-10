@@ -8,7 +8,7 @@ import { SignInParams } from "types/api";
 
 export const SignIn: VFC = memo(() => {
   const history = useHistory();
-  const {setIsSignedIn, setCurrentUser} = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -17,34 +17,37 @@ export const SignIn: VFC = memo(() => {
 
   const onCLickSignUp = useCallback(() => history.push("/signup"), [history]);
 
-  const handleSubmit = useCallback(async (e: MouseEvent<HTMLButtonElement>) => {
-    const params: SignInParams = {
-      email: email,
-      password: password,
-    };
+  const handleSubmit = useCallback(
+    async (e: MouseEvent<HTMLButtonElement>) => {
+      const params: SignInParams = {
+        email: email,
+        password: password,
+      };
 
-    try {
-      const res = await signIn(params);
+      try {
+        const res = await signIn(params);
 
-      if (res.status === 200) {
-        Cookies.set("_access_token", res.headers["access-token"])
-        Cookies.set("_client", res.headers["client"])
-        Cookies.set("_uid", res.headers["uid"])
+        if (res.status === 200) {
+          Cookies.set("_access_token", res.headers["access-token"]);
+          Cookies.set("_client", res.headers["client"]);
+          Cookies.set("_uid", res.headers["uid"]);
 
-        setIsSignedIn(true)
-        setCurrentUser(res.data.data)
+          setIsSignedIn(true);
+          setCurrentUser(res.data.data);
 
-        alert("ログインしました");
-        history.push("/");
-      } else {
+          alert("ログインしました");
+          history.push("/");
+        } else {
+          alert("ログインに失敗しました");
+        }
+      } catch (err) {
+        console.log(err);
         alert("ログインに失敗しました");
       }
-    } catch (err) {
-      console.log(err);
-      alert("ログインに失敗しました");
-    }
-  },[email, history, password, setCurrentUser, setIsSignedIn]);
-  
+    },
+    [email, history, password, setCurrentUser, setIsSignedIn]
+  );
+
   return (
     <Flex align="center" justify="center" height="100vh">
       <Box bg="white" w="md" p={4} borderRadius="md">
