@@ -1,6 +1,6 @@
 import { Box, Button, Flex, Heading, Input, Stack, Text } from "@chakra-ui/react";
 import { useSearchPharmacies } from "hooks/useSearchPharmacies";
-import { AuthContext } from "providers/Auth";
+import { AuthContext } from "providers/AuthProvider";
 import { ChangeEvent, memo, useContext, useState, VFC } from "react";
 
 export const SearchArea: VFC = memo(() => {

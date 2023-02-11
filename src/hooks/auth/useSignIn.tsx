@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import { signIn } from "lib/api/auth";
-import { AuthContext } from "providers/Auth";
+import { AuthContext } from "providers/AuthProvider";
 import { MouseEvent, useCallback, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SignInParams } from "types/api";

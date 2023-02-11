@@ -1,13 +1,10 @@
 import { Box, Button, Heading, HStack, Image, Spacer, Stack, Text, VStack } from "@chakra-ui/react";
-import { memo, VFC } from "react";
-import { Pharmacy } from "types/pharmacy";
+import { PharmacyContext } from "providers/PharmacyProvider";
+import { memo, useContext, VFC } from "react";
 
-type Props = {
-  pharmacies: Array<Pharmacy>;
-};
 
-export const Card: VFC<Props> = memo((props) => {
-  const { pharmacies } = props;
+export const Card: VFC = memo(() => {
+  const {pharmacies} = useContext(PharmacyContext)
   return (
       <VStack mt={7}>
         {pharmacies.map((paharmacy) => (

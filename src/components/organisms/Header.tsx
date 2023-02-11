@@ -1,7 +1,7 @@
 import { Flex, Heading, Link } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import { getCurrentUser, signOut } from "lib/api/auth";
-import { AuthContext } from "providers/Auth";
+import { AuthContext } from "providers/AuthProvider";
 import { memo, MouseEvent, useCallback, useContext, useEffect, VFC } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -9,7 +9,7 @@ export const Header: VFC = memo(() => {
   const history = useHistory();
   const onClickHome = useCallback(() => history.push("/"), [history]);
 
-  const { loading, isSignedIn,  setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
+  const { loading, isSignedIn, setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
 
   const handleGetCurrentUser = async () => {
     try {
