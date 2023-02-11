@@ -1,19 +1,16 @@
-import { Box, Button, Divider, Flex, Heading, Input, Stack, Text } from "@chakra-ui/react";
 import Cookies from "js-cookie";
 import { signIn } from "lib/api/auth";
 import { AuthContext } from "providers/Auth";
-import { ChangeEvent, memo, MouseEvent, useCallback, useContext, useState, VFC } from "react";
+import { MouseEvent, useCallback, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { SignInParams } from "types/api";
 
-export const SignIn: VFC = memo(() => {
+export const useSignIn = () => {
   const history = useHistory();
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value);
-  const onChangePassword = (e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value);
 
   const onCLickSignUp = useCallback(() => history.push("/signup"), [history]);
 
@@ -47,25 +44,5 @@ export const SignIn: VFC = memo(() => {
     },
     [email, history, password, setCurrentUser, setIsSignedIn]
   );
-
-  return (
-    <Flex align="center" justify="center" height="100vh">
-      <Box bg="white" w="md" p={4} borderRadius="md">
-        <Heading textAlign="center">ログイン</Heading>
-        <Divider my={4} />
-        <Stack px={8} py={4}>
-          <Stack spacing={4} py={5}>
-            <Input placeholder="メールアドレス" value={email} onChange={onChangeEmail} />
-            <Input placeholder="パスワード（６文字以上）" value={password} onChange={onChangePassword} />
-          </Stack>
-          <Button disabled={!email || !password ? true : false} onClick={handleSubmit}>
-            ログイン
-          </Button>
-          <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={onCLickSignUp}>
-            登録はこちら
-          </Text>
-        </Stack>
-      </Box>
-    </Flex>
-  );
-});
+  return { email, setEmail, password, setPassword, handleSubmit, onCLickSignUp };
+};

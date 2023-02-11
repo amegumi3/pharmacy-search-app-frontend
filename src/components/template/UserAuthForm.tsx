@@ -1,26 +1,31 @@
-import { Box, Divider, Flex, Heading, Stack } from "@chakra-ui/react";
+import {Stack, Text } from "@chakra-ui/react";
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
-import { memo, ReactNode, VFC } from "react";
+import { SubmitForm } from "components/organisms/SubmitForm";
+import { memo, MouseEvent, ReactNode, VFC } from "react";
 
 type Props = {
   children: ReactNode;
   title: string;
+  disabled: boolean;
+  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
+  buttonName: string;
+  link: () => void;
+  linkName: string;
 };
 
-export const UserAuthForm:VFC<Props> = memo((props) => {
-  const {children, title} = props;
+export const UserAuthForm: VFC<Props> = memo((props) => {
+  const { children, title, submit, disabled, link, linkName, buttonName } = props;
   return (
-    <Flex  align="center"  justify="center" height="100vh">
-      <Box bg="white" w="md" p={4} borderRadius="md">
-        <Heading textAlign="center">{title}</Heading>
-        <Divider my={4} />
-        <Stack px={8} py={4}>
-          <Stack spacing={4} py={5} >
-            {children}
-          </Stack>
-          <PrimaryButton >登録</PrimaryButton>
-        </Stack>
-      </Box>
-    </Flex>
-    );
+    <SubmitForm title={title}>
+      <Stack spacing={4} py={5}>
+        {children}
+      </Stack>
+      <PrimaryButton submit={submit} disabled={disabled}>
+        {buttonName}
+      </PrimaryButton>
+      <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={link}>
+        {linkName}
+      </Text>
+    </SubmitForm>
+  );
 });

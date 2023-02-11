@@ -9,7 +9,6 @@ type Props = {
 export const Card: VFC<Props> = memo((props) => {
   const { pharmacies } = props;
   return (
-    <>
       <VStack mt={7}>
         {pharmacies.map((paharmacy) => (
           <Box w="90%" h="110px" bgColor="pink.50" p={5} borderRadius="md" boxShadow="lg" key={paharmacy.id}>
@@ -33,6 +32,5 @@ export const Card: VFC<Props> = memo((props) => {
           </Box>
         ))}
       </VStack>
-    </>
   );
 });

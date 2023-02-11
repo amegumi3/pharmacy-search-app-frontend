@@ -2,8 +2,8 @@ import { memo, VFC } from "react";
 import { Switch, Route } from "react-router-dom"
 
 import { Home } from "components/pages/Home";
-import { SignUp } from "components/pages/userAuth/SignUp";
-import { SignIn } from "components/pages/userAuth/SignIn";
+import { SignUp } from "components/pages/auth/SignUp";
+import { SignIn } from "components/pages/auth/SignIn";
 import { HeaderLayout } from "components/template/HeaderLayout";
 import { AuthProvider } from "providers/Auth";
 import { Import } from "components/pages/Import";

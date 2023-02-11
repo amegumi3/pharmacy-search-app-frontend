@@ -16,9 +16,4 @@ export type User = {
   provider: string;
   email: string;
   name: string;
-  nickname?: string;
-  image?: string;
-  allowPasswordChange: boolean;
-  created_at: Date;
-  updated_at: Date;
 }
