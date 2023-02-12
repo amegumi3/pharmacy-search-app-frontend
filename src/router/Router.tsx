@@ -7,6 +7,7 @@ import { HeaderLayout } from "components/template/HeaderLayout";
 import { AuthProvider } from "providers/AuthProvider";
 import { Import } from "components/pages/Import";
 import { PharmacyProvider } from "providers/PharmacyProvider";
+import { DetailPharmacy } from "components/pages/DetailPharmacy";
 
 export const Router: VFC = memo(() => {
   return (
@@ -15,7 +16,9 @@ export const Router: VFC = memo(() => {
         <HeaderLayout>
           <PharmacyProvider>
             <Route exact path="/" component={Home} />
+          <Route path="/:id" component={DetailPharmacy}/>
           </PharmacyProvider>
+
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
           <Route path="/import" component={Import} />
