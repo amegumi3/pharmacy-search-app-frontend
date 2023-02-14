@@ -31,6 +31,7 @@ export const Header: VFC = memo(() => {
 
   useEffect(() => {
     handleGetCurrentUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setCurrentUser]);
 
   const onClickSignIn = useCallback(() => history.push("/signin"), [history]);

@@ -1,4 +1,4 @@
-import { searchPharmacy } from "lib/api/pharmacy";
+import { index } from "lib/api/pharmacy";
 import { PharmacyContext } from "providers/PharmacyProvider";
 import { useCallback, useContext } from "react";
 
@@ -7,7 +7,7 @@ export const useSearchPharmacies = () => {
   const getPharmacies = useCallback(
     async (word: string) => {
       try {
-        const res = await searchPharmacy(word);
+        const res = await index(word);
         if (res.status === 200) {
           const result = res.data;
           setPharmacies(result);
