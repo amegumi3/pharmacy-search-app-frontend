@@ -11,7 +11,6 @@ export const DetailPharmacy = () => {
   const { id } = useParams<{ id: any }>();
   const { onSelectPharmacy, selectedPharmacy } = useSelectPharmacy();
   onSelectPharmacy({ id, pharmacies });
-  console.log(typeof selectedPharmacy);
   console.log(selectedPharmacy);
   const [reportList, setReportList] = useState<Array<Report | null>>([]);
 
@@ -36,7 +35,6 @@ export const DetailPharmacy = () => {
     console.log(reportList);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(reportList);
   return (
     <Box ml={23}>
       <Flex direction="column">
@@ -61,8 +59,8 @@ export const DetailPharmacy = () => {
           </Thead>
           <Tbody>
             {reportList.map((report) => (
-              <Tr>
-                <Td>{report?.name}</Td>
+              <Tr key={report?.id}>
+                <Td >{report?.name}</Td>
                 <Td>{report?.point}</Td>
               </Tr>
             ))}
