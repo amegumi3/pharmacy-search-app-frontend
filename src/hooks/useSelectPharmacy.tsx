@@ -18,5 +18,6 @@ export const useSelectPharmacy = () => {
       console.log("見つかりませんでした");
     }
   };
+
   return { selectedPharmacy, setSelectedPharmacy, onSelectPharmacy };
 };

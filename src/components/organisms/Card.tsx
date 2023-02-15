@@ -9,7 +9,7 @@ export const Card: VFC = memo(() => {
   const { pharmacies } = useContext(PharmacyContext);
   const { onSelectPharmacy, selectedPharmacy } = useSelectPharmacy();
   console.log(selectedPharmacy);
-
+ 
   const onClickPharmacy = (id: number) => {
     onSelectPharmacy({ id, pharmacies });
     history.push(`/${id}`);
