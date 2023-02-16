@@ -18,8 +18,8 @@ export const Card: VFC = memo(() => {
   return (
     <VStack mt={7}>
       {pharmacies.map((pharmacy) => (
-        <Box w="90%" h="110px" bgColor="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id}>
-          <HStack spacing={9}>
+        <Box w="90%" h="110px" bgColor="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id} >
+          <HStack spacing={9} >
             <Image src="https://3.bp.blogspot.com/-tkXn5gIOMSo/UV1JBZK5k8I/AAAAAAAAPRU/eq5Rs79XDGQ/s1600/yakkyoku.png" boxSize="55" />
             <Box>
               <Stack spacing={3}>
@@ -36,7 +36,7 @@ export const Card: VFC = memo(() => {
             <Button onClick={() => onClickPharmacy(pharmacy.id)}>詳細情報</Button>
           </HStack>
         </Box>
-      ))}
+          ))}
     </VStack>
   );
 });

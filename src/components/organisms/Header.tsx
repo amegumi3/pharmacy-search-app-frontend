@@ -10,7 +10,7 @@ export const Header: VFC = memo(() => {
   const onClickHome = useCallback(() => history.push("/"), [history]);
 
   const { loading, isSignedIn, setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
-
+  console.log(loading);
   const handleGetCurrentUser = async () => {
     try {
       const res = await getCurrentUser();

@@ -12,10 +12,21 @@ export const useImport = () => {
     }
   };
 
-  const getReportFile = (e: ChangeEvent<HTMLInputElement>) => {
+  const getPharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files[0].name.includes("届出受理医療機関名簿")) {
       setFile(files[0]);
+    } else {
+      console.log(file?.name);
+      alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
+    }
+  };
+
+  const getReportFile = (e: ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    if (files && files[0].name.includes("届出施設基準一覧表")) {
+      setFile(files[0]);
+      console.log(file)
     } else {
       console.log(file?.name);
       alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
@@ -30,22 +41,28 @@ export const useImport = () => {
       console.log(formData);
       try {
         if (file.name.includes("コード内容別一覧表")) {
-          await axios.post("http://localhost:3010/api/v1/pharmacies/import", formData).then((res) => {
+          await axios.post("http://localhost:3010/api/v1/pharmacies/pharmacy_import", formData).then((res) => {
             console.log(res.data);
             alert("成功しました");
             setFile(null);
           })} else if(file.name.includes("届出受理医療機関名簿")) {
-            await axios.post("http://localhost:3010/api/v1/pharmacies/report_import", formData).then((res) => {
+            await axios.post("http://localhost:3010/api/v1/pharmacies/pharmacy_report_import", formData).then((res) => {
               console.log(res.data);
               alert("成功しました");
               setFile(null);
             })
-          } ;
+          } else if(file.name.includes("届出施設基準一覧表")) {
+            await axios.post("http://localhost:3010/api/v1/reports/report_import", formData).then((res) => {
+              console.log(res.data);
+              alert("成功しました");
+              setFile(null);
+            })
+          };
       } catch (err) {
         console.log(err);
         alert("失敗しました");
       }
     }
   }, [file]);
-  return { file, setFile, getPharmacyFile, getSubmit, getReportFile };
+  return { file, setFile, getPharmacyFile, getSubmit, getPharmacyReportFile, getReportFile };
 };
