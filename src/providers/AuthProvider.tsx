@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
-import { User } from "types/api";
+import { User } from "types/auth";
 
 type AuthContextType = {
   loading: boolean;

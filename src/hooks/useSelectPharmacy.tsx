@@ -1,5 +1,5 @@
 import { PharmacyContext } from "providers/PharmacyProvider";
-import {useContext } from "react";
+import { useContext } from "react";
 import { Pharmacy } from "types/pharmacy";
 
 type Props = {
@@ -18,6 +18,5 @@ export const useSelectPharmacy = () => {
       console.log("見つかりませんでした");
     }
   };
-
   return { selectedPharmacy, setSelectedPharmacy, onSelectPharmacy };
 };

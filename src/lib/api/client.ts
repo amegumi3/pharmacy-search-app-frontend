@@ -2,12 +2,12 @@ import applyCaseMiddleware from "axios-case-converter";
 import axios from "axios";
 
 const options = {
-  ignoreHeaders: true
+  ignoreHeaders: true,
 };
 
-const client = applyCaseMiddleware(axios.create({
-  baseURL: "http://localhost:3010/api/v1"
-}), options
+export const client = applyCaseMiddleware(
+  axios.create({
+    baseURL: "http://localhost:3010/api/v1",
+  }),
+  options
 );
-
-export default client;

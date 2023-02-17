@@ -12,7 +12,7 @@ export const Card: VFC = memo(() => {
  
   const onClickPharmacy = (id: number) => {
     onSelectPharmacy({ id, pharmacies });
-    history.push(`/${id}`);
+    history.push(`/pharmacies/${id}`);
   };
 
   return (

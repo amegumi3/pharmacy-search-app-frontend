@@ -4,7 +4,7 @@ import { MouseEvent, ReactNode, VFC } from "react";
 type Props = {
   children: ReactNode;
   submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
-  disabled: boolean;
+  disabled?: boolean;
 };
 export const PrimaryButton: VFC<Props> = (props) => {
   const { children, submit, disabled } = props;
