@@ -1,5 +1,5 @@
 import { Stack, Text } from "@chakra-ui/react";
-import { SubmitButton } from "components/atoms/button/SubmitButton";
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 import { SubmitForm } from "components/organisms/SubmitForm";
 import { memo, MouseEvent, ReactNode, VFC } from "react";
 
@@ -20,9 +20,9 @@ export const UserAuthForm: VFC<Props> = memo((props) => {
       <Stack spacing={4} py={5}>
         {children}
       </Stack>
-      <SubmitButton submit={submit} disabled={disabled}>
+      <PrimaryButton submit={submit} disabled={disabled}>
         {buttonName}
-      </SubmitButton>
+      </PrimaryButton>
       <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={link}>
         {linkName}
       </Text>

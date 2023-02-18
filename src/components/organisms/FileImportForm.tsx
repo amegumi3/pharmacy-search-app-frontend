@@ -1,5 +1,5 @@
 import { Center, Heading, Input, Stack, Text,  WrapItem } from "@chakra-ui/react";
-import { SubmitButton } from "components/atoms/button/SubmitButton";
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 import { memo, MouseEvent, VFC } from "react";
 
 type Props = {
@@ -23,9 +23,9 @@ export const FileImportForm: VFC<Props> = memo((props) => {
             <Text textAlign="center">{text}</Text>
             <Input type="file" accept=".xlsx" onChange={onChange} />
           </Stack>
-          <SubmitButton disabled={!file} submit={submit}>
+          <PrimaryButton disabled={!file} submit={submit}>
             登録
-          </SubmitButton>
+          </PrimaryButton>
         </Stack>
       </Center>
     </WrapItem>

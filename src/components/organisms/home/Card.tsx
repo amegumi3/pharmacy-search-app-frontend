@@ -1,10 +1,11 @@
 import { memo, useContext, VFC } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Button, Heading, HStack,  Spacer, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Heading, HStack, Image, Spacer, Stack, Text, VStack } from "@chakra-ui/react";
 
 import { useSelectPharmacy } from "hooks/useSelectPharmacy";
 import { PharmacyContext } from "providers/PharmacyProvider";
-import { PharmacyImage } from "components/atoms/image/PharmacyImage";
+import { pharmacyImage } from "lib";
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 export const Card: VFC = memo(() => {
   const history = useHistory();
@@ -19,9 +20,10 @@ export const Card: VFC = memo(() => {
   return (
     <VStack mt={7}>
       {pharmacies.map((pharmacy) => (
-        <Box w="90%" h="110px" bgColor="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id}>
+        <Box w="90%" h="135" bgColor="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id}>
           <HStack spacing={9}>
-            <PharmacyImage boxSize={"55"}/>
+            {}
+            <Image src={pharmacyImage} boxSize="55" />
             <Box>
               <Stack spacing={3}>
                 <Heading as="h6" size="md">
@@ -34,7 +36,7 @@ export const Card: VFC = memo(() => {
               </Stack>
             </Box>
             <Spacer />
-            <Button onClick={() => onClickPharmacy(pharmacy.id)}>詳細情報</Button>
+            <PrimaryButton submit={() => onClickPharmacy(pharmacy.id)}>詳細情報</PrimaryButton>
           </HStack>
         </Box>
       ))}
