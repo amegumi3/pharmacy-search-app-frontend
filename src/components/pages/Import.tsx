@@ -27,6 +27,16 @@ export const Import: VFC = () => {
         <SubmitForm title={"データ登録"}>
           <Stack px={8} py={4}>
             <Stack spacing={4} py={5}>
+              <Text>届出施設基準一覧表を添付</Text>
+              <Input type="file" accept=".xlsx" onChange={onChangeReportFile} />
+            </Stack>
+            <SubmitButton disabled={!reportFile} submit={reportSubmit}>
+              登録
+            </SubmitButton>
+          </Stack>
+
+          <Stack px={8} py={4}>
+            <Stack spacing={4} py={5}>
               <Text>コード内容別医療機関一覧表を添付</Text>
               <Input type="file" accept=".xlsx" onChange={onChangePharmacyFile} />
             </Stack>
@@ -41,16 +51,6 @@ export const Import: VFC = () => {
               <Input type="file" accept=".xlsx" onChange={onChangePharmacyReportFile} />
             </Stack>
             <SubmitButton disabled={!pharmacyReportFile} submit={pharmacyReportSubmit}>
-              登録
-            </SubmitButton>
-          </Stack>
-
-          <Stack px={8} py={4}>
-            <Stack spacing={4} py={5}>
-              <Text>届出基準一覧表を添付</Text>
-              <Input type="file" accept=".xlsx" onChange={onChangeReportFile} />
-            </Stack>
-            <SubmitButton disabled={!reportFile} submit={reportSubmit}>
               登録
             </SubmitButton>
           </Stack>

@@ -1,4 +1,4 @@
-import { pharmacyReportImoprt } from "lib/api/pharmacy";
+import {  reportImoprt } from "lib/api/pharmacy";
 import { ChangeEvent, useCallback, useState } from "react";
 
 export const useReportImport = () => {
@@ -6,7 +6,7 @@ export const useReportImport = () => {
 
   const getReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files && files[0].name.includes("届出受理医療機関名簿")) {
+    if (files && files[0].name.includes("届出施設基準一覧表")) {
       setReportFile(files[0]);
     } else {
       alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
@@ -19,8 +19,8 @@ export const useReportImport = () => {
       const formData = new FormData();
       formData.append("file", reportFile);
       try {
-        if (reportFile.name.includes("届出受理医療機関名簿")) {
-          await pharmacyReportImoprt(formData);
+        if (reportFile.name.includes("届出施設基準一覧表")) {
+          await reportImoprt(formData);
           alert("成功しました");
           setReportFile(null);
         }

@@ -6,7 +6,7 @@ export const usePharmacyReportImport = () => {
 
   const getPharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files && files[0].name.includes("届出施設基準一覧表")) {
+    if (files && files[0].name.includes("届出受理医療機関名簿")) {
       setPharmacyReportFile(files[0]);
     } else {
       alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
