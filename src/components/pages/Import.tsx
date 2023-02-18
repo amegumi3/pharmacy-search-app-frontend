@@ -2,7 +2,7 @@ import { Input, Stack, Text } from "@chakra-ui/react";
 import { ChangeEvent, useContext, VFC } from "react";
 
 import { SubmitForm } from "components/organisms/SubmitForm";
-import { PrimaryButton } from "components/atoms/button/PrimaryButton";
+import { SubmitButton } from "components/atoms/button/SubmitButton";
 import { AuthContext } from "providers/AuthProvider";
 import { Page404 } from "./Page404";
 import { usePharmacyImport } from "hooks/import/usePharmacyImport";
@@ -30,9 +30,9 @@ export const Import: VFC = () => {
               <Text>コード内容別医療機関一覧表を添付</Text>
               <Input type="file" accept=".xlsx" onChange={onChangePharmacyFile} />
             </Stack>
-            <PrimaryButton disabled={!pharmacyFile} submit={pharmacySubmit}>
+            <SubmitButton disabled={!pharmacyFile} submit={pharmacySubmit}>
               登録
-            </PrimaryButton>
+            </SubmitButton>
           </Stack>
 
           <Stack px={8} py={4}>
@@ -40,9 +40,9 @@ export const Import: VFC = () => {
               <Text>届出受理医療機関名簿を添付</Text>
               <Input type="file" accept=".xlsx" onChange={onChangePharmacyReportFile} />
             </Stack>
-            <PrimaryButton disabled={!pharmacyReportFile} submit={pharmacyReportSubmit}>
+            <SubmitButton disabled={!pharmacyReportFile} submit={pharmacyReportSubmit}>
               登録
-            </PrimaryButton>
+            </SubmitButton>
           </Stack>
 
           <Stack px={8} py={4}>
@@ -50,16 +50,14 @@ export const Import: VFC = () => {
               <Text>届出基準一覧表を添付</Text>
               <Input type="file" accept=".xlsx" onChange={onChangeReportFile} />
             </Stack>
-            <PrimaryButton disabled={!reportFile} submit={reportSubmit}>
+            <SubmitButton disabled={!reportFile} submit={reportSubmit}>
               登録
-            </PrimaryButton>
+            </SubmitButton>
           </Stack>
         </SubmitForm>
       ) : (
         <Page404 />
       )}
-
-      
     </>
   );
 };
