@@ -9,8 +9,8 @@ type Props = {
 export const CenterBox: VFC<Props> = (props) => {
   const { children, height="100vh" } = props;
   return (
-    <Flex align="center" justify="center" height={height}>
-      <Box bg="white" w={{ base: "sm", md: "xl" }} p={5} borderRadius="md">
+    <Flex align="center" justify="center" height={height} m="auto">
+      <Box bg="white" w={{ base: "sm", md: "2xl" }} p={5} borderRadius="md">
         {children}
       </Box>
     </Flex>

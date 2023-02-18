@@ -1,13 +1,12 @@
-import { Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Heading, Wrap } from "@chakra-ui/react";
 import { ChangeEvent, useContext, VFC } from "react";
 
-import { SubmitForm } from "components/organisms/SubmitForm";
-import { SubmitButton } from "components/atoms/button/SubmitButton";
 import { AuthContext } from "providers/AuthProvider";
 import { Page404 } from "./Page404";
 import { usePharmacyImport } from "hooks/import/usePharmacyImport";
 import { usePharmacyReportImport } from "hooks/import/usePharmacyReportImport";
 import { useReportImport } from "hooks/import/useReportImport";
+import { FileImportForm } from "components/organisms/FileImportForm";
 
 export const Import: VFC = () => {
   const { getPharmacyFile, pharmacySubmit, pharmacyFile } = usePharmacyImport();
@@ -24,37 +23,38 @@ export const Import: VFC = () => {
   return (
     <>
       {isSignedIn === true ? (
-        <SubmitForm title={"データ登録"}>
-          <Stack px={8} py={4}>
-            <Stack spacing={4} py={5}>
-              <Text>届出施設基準一覧表を添付</Text>
-              <Input type="file" accept=".xlsx" onChange={onChangeReportFile} />
-            </Stack>
-            <SubmitButton disabled={!reportFile} submit={reportSubmit}>
-              登録
-            </SubmitButton>
-          </Stack>
+        <Box>
+          <Flex justify="center" mt={42} mb={3}>
+            <Heading>ファイル登録フォーム</Heading>
+          </Flex>
+          <Flex alignItems="center" justify="center">
+            <Wrap justify="center" alignItems="center" spacing={8} m={5} w="xsm">
+              <FileImportForm
+                title={"STEP 1"}
+                text={"届出施設基準一覧表を添付"}
+                onChange={onChangeReportFile}
+                file={reportFile}
+                submit={reportSubmit}
+              />
 
-          <Stack px={8} py={4}>
-            <Stack spacing={4} py={5}>
-              <Text>コード内容別医療機関一覧表を添付</Text>
-              <Input type="file" accept=".xlsx" onChange={onChangePharmacyFile} />
-            </Stack>
-            <SubmitButton disabled={!pharmacyFile} submit={pharmacySubmit}>
-              登録
-            </SubmitButton>
-          </Stack>
+              <FileImportForm
+                title={"STEP 2"}
+                text={"コード内容別医療機関一覧表を添付"}
+                onChange={onChangePharmacyFile}
+                file={pharmacyFile}
+                submit={pharmacySubmit}
+              />
 
-          <Stack px={8} py={4}>
-            <Stack spacing={4} py={5}>
-              <Text>届出受理医療機関名簿を添付</Text>
-              <Input type="file" accept=".xlsx" onChange={onChangePharmacyReportFile} />
-            </Stack>
-            <SubmitButton disabled={!pharmacyReportFile} submit={pharmacyReportSubmit}>
-              登録
-            </SubmitButton>
-          </Stack>
-        </SubmitForm>
+              <FileImportForm
+                title={"STEP 3"}
+                text={"届出受理医療機関名簿を添付"}
+                onChange={onChangePharmacyReportFile}
+                file={pharmacyReportFile}
+                submit={pharmacyReportSubmit}
+              />
+            </Wrap>
+          </Flex>
+        </Box>
       ) : (
         <Page404 />
       )}
