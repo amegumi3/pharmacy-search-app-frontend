@@ -1,15 +1,18 @@
-import { pharmacyImoprt } from "lib/api/pharmacy";
 import { ChangeEvent, useCallback, useState } from "react";
+
+import { useMessage } from "hooks/useMessage";
+import { pharmacyImoprt } from "lib/api/pharmacy";
 
 export const usePharmacyImport = () => {
   const [pharmacyFile, setPharmacyFile] = useState<File | null>(null);
+  const { showMessage } = useMessage();
 
   const getPharmacyFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files[0].name.includes("コード内容別一覧表")) {
       setPharmacyFile(files[0]);
     } else {
-      alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
+      showMessage({ status: "error", title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください" });
     }
   };
 
@@ -21,14 +24,14 @@ export const usePharmacyImport = () => {
       try {
         if (pharmacyFile.name.includes("コード内容別一覧表")) {
           await pharmacyImoprt(formData);
-          alert("成功しました");
+          showMessage({ status: "success", title: "インポートしました" });
           setPharmacyFile(null);
         }
       } catch (err) {
         console.log(err);
-        alert("失敗しました");
+        showMessage({ status: "error", title: "インポートに失敗しました" });
       }
     }
-  }, [pharmacyFile]);
+  }, [pharmacyFile, showMessage]);
   return { getPharmacyFile, pharmacySubmit, pharmacyFile };
 };

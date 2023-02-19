@@ -1,15 +1,17 @@
-import {  reportImoprt } from "lib/api/pharmacy";
+import { useMessage } from "hooks/useMessage";
+import { reportImoprt } from "lib/api/pharmacy";
 import { ChangeEvent, useCallback, useState } from "react";
 
 export const useReportImport = () => {
   const [reportFile, setReportFile] = useState<File | null>(null);
+  const { showMessage } = useMessage();
 
   const getReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files && files[0].name.includes("届出施設基準一覧表")) {
       setReportFile(files[0]);
     } else {
-      alert("ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください");
+      showMessage({ status: "error", title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください" });
     }
   };
 
@@ -21,14 +23,14 @@ export const useReportImport = () => {
       try {
         if (reportFile.name.includes("届出施設基準一覧表")) {
           await reportImoprt(formData);
-          alert("成功しました");
+          showMessage({ status: "success", title: "インポートしました" });
           setReportFile(null);
         }
       } catch (err) {
         console.log(err);
-        alert("失敗しました");
+        showMessage({ status: "error", title: "インポートに失敗しました" });
       }
     }
-  }, [reportFile]);
+  }, [reportFile, showMessage]);
   return { getReportFile, reportSubmit, reportFile };
 };

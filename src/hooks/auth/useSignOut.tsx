@@ -4,9 +4,12 @@ import { AuthContext } from "providers/AuthProvider";
 import { MouseEvent, useCallback, useContext } from "react";
 import { useHistory } from "react-router-dom";
 
-export const useSignOut =  () => {
+import { useMessage } from "hooks/useMessage";
+
+export const useSignOut = () => {
   const history = useHistory();
   const { setIsSignedIn } = useContext(AuthContext);
+  const { showMessage } = useMessage();
 
   const signOut = () => {
     return client.delete("auth/sign_out", {
@@ -29,16 +32,15 @@ export const useSignOut =  () => {
 
           setIsSignedIn(false);
           history.push("/signin");
-
-          alert("ログアウトしました");
+          showMessage({ status: "success", title: "ログアウトしました" });
         } else {
-          console.log("失敗");
+          showMessage({ status: "error", title: "ログアウトに失敗しました" });
         }
       } catch (err) {
         console.log(err);
       }
     },
-    [history, setIsSignedIn]
+    [history, setIsSignedIn, showMessage]
   );
-    return{handleSignOut}
-}
+  return { handleSignOut };
+};

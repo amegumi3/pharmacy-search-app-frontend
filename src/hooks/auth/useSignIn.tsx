@@ -1,9 +1,11 @@
 import Cookies from "js-cookie";
-import { client } from "lib/api/client";
-import { AuthContext } from "providers/AuthProvider";
-import { MouseEvent, useCallback, useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { MouseEvent, useCallback, useContext, useState } from "react";
+
+import { client } from "lib/api/client";
 import { SignInParams } from "types/auth";
+import { AuthContext } from "providers/AuthProvider";
+import { useMessage } from "hooks/useMessage";
 
 export const useSignIn = () => {
   const history = useHistory();
@@ -11,7 +13,7 @@ export const useSignIn = () => {
 
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-
+  const { showMessage } = useMessage();
   const onCLickSignUp = useCallback(() => history.push("/signup"), [history]);
 
   const handleSubmit = useCallback(
@@ -29,14 +31,14 @@ export const useSignIn = () => {
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
         console.log(res.data);
-        alert("成功しました");
+        showMessage({ status: "success", title: "ログインしました" });
         history.push("/");
       } catch (err) {
         console.log(err);
-        alert("失敗しました");
+        showMessage({ status: "error", title: "ログインに失敗しました" });
       }
     },
-    [email, history, password, setCurrentUser, setIsSignedIn]
+    [email, history, password, setCurrentUser, setIsSignedIn, showMessage]
   );
   return { email, setEmail, password, setPassword, handleSubmit, onCLickSignUp };
 };

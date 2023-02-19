@@ -1,3 +1,4 @@
+import { useMessage } from "hooks/useMessage";
 import Cookies from "js-cookie";
 import { client } from "lib/api/client";
 import { AuthContext } from "providers/AuthProvider";
@@ -11,6 +12,7 @@ export const useSignUp = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
+  const { showMessage } = useMessage();
 
   const onCLickSignIn = useCallback(() => history.push("/signin"), [history]);
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
@@ -31,17 +33,16 @@ export const useSignUp = () => {
 
         setIsSignedIn(true);
         setCurrentUser(res.data.data);
-
-        alert("登録しました");
+        showMessage({ status: "success", title: "登録しました" });
         history.push("/");
       } catch (err: any) {
-        alert("登録に失敗しました");
         console.log(err);
         const errMessages = err.response.data.errors.fullMessages;
         errMessages.map((message: string) => console.log(message));
+        showMessage({ status: "error", title: "登録に失敗しました" });
       }
     },
-    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn]
+    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn, showMessage]
   );
   return { name, setName, email, setEmail, password, setPassword, passwordConfirmation, setPasswordConfirmation, handleSubmit, onCLickSignIn };
 };

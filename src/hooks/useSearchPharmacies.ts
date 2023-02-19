@@ -1,9 +1,12 @@
 import { index } from "lib/api/pharmacy";
 import { PharmacyContext } from "providers/PharmacyProvider";
 import { useCallback, useContext } from "react";
+import { useMessage } from "./useMessage";
 
 export const useSearchPharmacies = () => {
   const { pharmacies, setPharmacies } = useContext(PharmacyContext);
+  const { showMessage } = useMessage();
+
   const getPharmacies = useCallback(
     async (word: string) => {
       try {
@@ -13,15 +16,15 @@ export const useSearchPharmacies = () => {
           setPharmacies(result);
           console.log(res);
           if (res.data.length === 0) {
-            console.log("検索結果は０件です");
+          showMessage({ status: "info", title: "検索結果は０件です。別のキーワードで検索してみてください" });
           }
         }
       } catch (err) {
         console.log(err);
-        console.log("取得に失敗しました");
+        showMessage({ status: "error", title: "検索に失敗しました" });
       }
     },
-    [setPharmacies]
+    [setPharmacies, showMessage]
   );
   return { getPharmacies, pharmacies, setPharmacies };
 };

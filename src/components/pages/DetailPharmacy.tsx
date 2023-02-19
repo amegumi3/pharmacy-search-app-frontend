@@ -7,11 +7,14 @@ import { show } from "lib/api/pharmacy";
 import { Report } from "types/Report";
 import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
+import { useMessage } from "hooks/useMessage";
 
 export const DetailPharmacy = memo(() => {
   const { id } = useParams<{ id: any }>();
   const { selectedPharmacy } = useContext(PharmacyContext);
   const [reportList, setReportList] = useState<Array<Report | null>>([]);
+  const { showMessage } = useMessage();
+
   console.log(selectedPharmacy);
   const getReports = useCallback(async (id: number) => {
     try {
@@ -20,13 +23,13 @@ export const DetailPharmacy = memo(() => {
       setReportList(result);
       console.log(res);
       if (res.data.length === 0) {
-        alert("届出している施設基準はありません");
+        showMessage({ status: "info", title: "届出している施設基準はありません" });
       }
     } catch (err) {
       console.log(err);
-      console.log("失敗しました");
+      showMessage({ status: "error", title: "表示に失敗しました" });
     }
-  }, []);
+  }, [showMessage]);
 
   useEffect(() => {
     getReports(id);
