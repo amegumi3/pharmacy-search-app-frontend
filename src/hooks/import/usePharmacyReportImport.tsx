@@ -1,11 +1,13 @@
-import { ChangeEvent, useCallback, useState } from "react";
+import { ChangeEvent, useCallback, useContext, useState } from "react";
 
 import { pharmacyReportImoprt } from "lib/api/pharmacy";
 import { useMessage } from "hooks/useMessage";
+import { AuthContext } from "providers/AuthProvider";
 
 export const usePharmacyReportImport = () => {
   const [pharmacyReportFile, setPharmacyReportFile] = useState<File | null>(null);
   const { showMessage } = useMessage();
+  const { setLoading } = useContext(AuthContext);
 
   const getPharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -21,6 +23,7 @@ export const usePharmacyReportImport = () => {
     if (pharmacyReportFile) {
       const formData = new FormData();
       formData.append("file", pharmacyReportFile);
+      setLoading(true);
       try {
         if (pharmacyReportFile.name.includes("届出受理医療機関名簿")) {
           await pharmacyReportImoprt(formData);
@@ -30,8 +33,10 @@ export const usePharmacyReportImport = () => {
       } catch (err) {
         console.log(err);
         showMessage({ status: "error", title: "インポートに失敗しました" });
+      } finally {
+        setLoading(false);
       }
     }
-  }, [pharmacyReportFile, showMessage]);
+  }, [pharmacyReportFile, setLoading, showMessage]);
   return { getPharmacyReportFile, pharmacyReportSubmit, pharmacyReportFile };
 };

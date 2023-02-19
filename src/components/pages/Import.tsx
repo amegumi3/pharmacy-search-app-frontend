@@ -14,11 +14,10 @@ export const Import: VFC = () => {
   const { reportFile, reportSubmit, getReportFile } = useReportImport();
 
   const onChangePharmacyFile = (e: ChangeEvent<HTMLInputElement>) => getPharmacyFile(e);
-
   const { isSignedIn } = useContext(AuthContext);
   const onChangePharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => getPharmacyReportFile(e);
-
   const onChangeReportFile = (e: ChangeEvent<HTMLInputElement>) => getReportFile(e);
+  
 
   return (
     <>

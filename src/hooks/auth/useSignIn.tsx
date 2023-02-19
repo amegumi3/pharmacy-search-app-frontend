@@ -9,8 +9,7 @@ import { useMessage } from "hooks/useMessage";
 
 export const useSignIn = () => {
   const history = useHistory();
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
-
+  const { setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const { showMessage } = useMessage();
@@ -22,6 +21,7 @@ export const useSignIn = () => {
         email: email,
         password: password,
       };
+      setLoading(true);
       try {
         const res = await client.post("auth/sign_in", params);
         Cookies.set("_access_token", res.headers["access-token"]);
@@ -36,9 +36,11 @@ export const useSignIn = () => {
       } catch (err) {
         console.log(err);
         showMessage({ status: "error", title: "ログインに失敗しました" });
+      } finally {
+        setLoading(false);
       }
     },
-    [email, history, password, setCurrentUser, setIsSignedIn, showMessage]
+    [email, history, password, setCurrentUser, setIsSignedIn, setLoading, showMessage]
   );
   return { email, setEmail, password, setPassword, handleSubmit, onCLickSignUp };
 };

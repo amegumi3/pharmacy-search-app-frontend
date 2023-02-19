@@ -20,7 +20,7 @@ export const UserAuthForm: VFC<Props> = memo((props) => {
       <Stack spacing={4} py={5}>
         {children}
       </Stack>
-      <PrimaryButton submit={submit} disabled={disabled}>
+      <PrimaryButton submit={submit} disabled={disabled} >
         {buttonName}
       </PrimaryButton>
       <Text textAlign="center" as="a" pt={8} _hover={{ cursor: "pointer" }} onClick={link}>

@@ -15,7 +15,7 @@ export const useSignUp = () => {
   const { showMessage } = useMessage();
 
   const onCLickSignIn = useCallback(() => history.push("/signin"), [history]);
-  const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
+  const { setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
@@ -25,8 +25,10 @@ export const useSignUp = () => {
         password: password,
         passwordConfirmation: passwordConfirmation,
       };
+      setLoading(true);
+
       try {
-        const res = await client.post("auth/sign_up", params);
+        const res = await client.post("auth", params);
         Cookies.set("_access_token", res.headers["access-token"]);
         Cookies.set("_client", res.headers["client"]);
         Cookies.set("_uid", res.headers["uid"]);
@@ -40,9 +42,11 @@ export const useSignUp = () => {
         const errMessages = err.response.data.errors.fullMessages;
         errMessages.map((message: string) => console.log(message));
         showMessage({ status: "error", title: "登録に失敗しました" });
+      } finally {
+        setLoading(false);
       }
     },
-    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn, showMessage]
+    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn, setLoading, showMessage]
   );
   return { name, setName, email, setEmail, password, setPassword, passwordConfirmation, setPasswordConfirmation, handleSubmit, onCLickSignIn };
 };

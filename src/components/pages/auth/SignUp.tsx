@@ -1,5 +1,5 @@
 import { Input } from "@chakra-ui/react";
-import { memo, MouseEvent, VFC } from "react";
+import { memo, MouseEvent,  VFC } from "react";
 
 import { useSignUp } from "hooks/auth/useSignUp";
 import { UserAuthForm } from "components/template/UserAuthForm";
