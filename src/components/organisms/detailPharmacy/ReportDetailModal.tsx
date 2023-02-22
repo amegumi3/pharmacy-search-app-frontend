@@ -2,7 +2,6 @@ import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOve
 import { memo, VFC } from "react";
 
 type Props = {
-  // id: number | null;
   name: string | null;
   calcCase: string | null;
   isOpen: boolean;

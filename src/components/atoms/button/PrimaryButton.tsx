@@ -4,12 +4,13 @@ import { MouseEvent, ReactNode, useContext, VFC } from "react";
 
 type Props = {
   children: ReactNode;
-  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
   disabled?: boolean;
   bg?: string;
 };
+
 export const PrimaryButton: VFC<Props> = (props) => {
-  const {loading} = useContext(AuthContext);
+  const { loading } = useContext(AuthContext);
   const { children, submit, disabled, bg = "orange.100" } = props;
   return (
     <Button onClick={submit} disabled={disabled} isLoading={loading} ml={4} bg={bg} _hover={{ opacity: 0.8, cursor: "pointer" }}>

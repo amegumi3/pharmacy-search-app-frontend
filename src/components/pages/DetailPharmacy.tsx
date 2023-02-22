@@ -1,7 +1,6 @@
 import { memo, useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, Td, Tr, useDisclosure } from "@chakra-ui/react";
-import { FaQuestionCircle } from "react-icons/fa";
 
 import { PharmacyContext } from "providers/PharmacyProvider";
 import { show } from "lib/api/pharmacy";
@@ -10,6 +9,7 @@ import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
 import { useMessage } from "hooks/useMessage";
 import { ReportDetailModal } from "components/organisms/detailPharmacy/ReportDetailModal";
+import { QuestionButton } from "components/atoms/button/QuestionButton";
 
 export const DetailPharmacy = memo(() => {
   const { onOpen, isOpen, onClose } = useDisclosure();
@@ -77,9 +77,7 @@ export const DetailPharmacy = memo(() => {
                   <Td>{report?.name}</Td>
                   <Td>
                     {report?.point}
-                    <button>
-                      <FaQuestionCircle onClick={() => onClickButton(report?.name, report?.calcCase)} size={12}/>
-                    </button>
+                    <QuestionButton show={() => onClickButton(report?.name, report?.calcCase)} />
                   </Td>
                 </>
               )}

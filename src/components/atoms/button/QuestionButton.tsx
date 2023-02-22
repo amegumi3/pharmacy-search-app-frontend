@@ -1,18 +1,15 @@
-import { MouseEvent, ReactNode,  VFC } from "react";
+import { VFC } from "react";
+import { FaQuestionCircle } from "react-icons/fa";
 
 type Props = {
-  children: ReactNode;
-  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  disabled?: boolean;
+  show: () => void;
 };
+
 export const QuestionButton: VFC<Props> = (props) => {
-  const { children, submit } = props;
+  const { show } = props;
   return (
-    // <Button onClick={submit} disabled={disabled} isLoading={loading} ml={4} bg={bg} _hover={{ opacity: 0.8, cursor: "pointer" }}>
-    //   {children}
-    // </Button>
-    <button onClick={submit} >
-      {children}
+    <button>
+      <FaQuestionCircle onClick={show} size={12} />
     </button>
   );
 };
