@@ -10,9 +10,9 @@ export const ReportInfo: VFC<Props> = memo((props) => {
 
   return (
     <>
-      <Box bgColor="gray.100" mt={2} mx={2} p={2} w="20%">
+      <Box  mt={2} mx={2} p={2} w="20%">
         <Heading size="ml" ml={3}>
-          届出基準一覧
+          ー 届出基準一覧 ー
         </Heading>
       </Box>
       <TableContainer bgColor="orange.50">
