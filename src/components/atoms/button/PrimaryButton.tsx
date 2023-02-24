@@ -1,10 +1,11 @@
 import { Button } from "@chakra-ui/react";
-import { AuthContext } from "providers/AuthProvider";
 import { MouseEvent, ReactNode, useContext, VFC } from "react";
+
+import { AuthContext } from "providers/AuthProvider";
 
 type Props = {
   children: ReactNode;
-  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
+  submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   disabled?: boolean;
   bg?: string;
 };

@@ -3,22 +3,22 @@ import { memo, VFC } from "react";
 
 type Props = {
   name: string | null;
-  calcCase: string | null;
+  text: string | null;
   isOpen: boolean;
   onClose: () => void;
 };
 
-export const ReportDetailModal: VFC<Props> = memo((props) => {
-  const { isOpen, onClose, name, calcCase } = props;
+export const PrimaryModal: VFC<Props> = memo((props) => {
+  const { isOpen, onClose, name, text } = props;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="xl" isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
       <ModalOverlay >
         <ModalContent>
-          <ModalHeader>{name}が算定されるケース</ModalHeader>
+          <ModalHeader>{name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>{calcCase}</Text>
+            <Text>{text}</Text>
           </ModalBody>
         </ModalContent>
       </ModalOverlay>

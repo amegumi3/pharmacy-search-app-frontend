@@ -4,5 +4,5 @@ export type Report = {
   point: string;
   basic: boolean;
   calcCase: string;
-  report_feature: string;
+  reportFeature: string;
 };

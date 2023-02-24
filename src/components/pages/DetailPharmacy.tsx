@@ -8,8 +8,9 @@ import { Report } from "types/Report";
 import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
 import { useMessage } from "hooks/useMessage";
-import { ReportDetailModal } from "components/organisms/detailPharmacy/ReportDetailModal";
+import { PrimaryModal } from "components/molecules/PrimaryModal";
 import { QuestionButton } from "components/atoms/button/QuestionButton";
+import { FeatureLists } from "components/organisms/detailPharmacy/FeatureLists";
 
 export const DetailPharmacy = memo(() => {
   const { onOpen, isOpen, onClose } = useDisclosure();
@@ -48,10 +49,20 @@ export const DetailPharmacy = memo(() => {
     setSelectReportName(name);
     onOpen();
   };
-
+  const featureList: Array<string | undefined> = [];
+  if (reportList) {
+    for (var i: number = 0; i < reportList?.length; i++) {
+      if (reportList[i]?.reportFeature === null) {
+        continue;
+      }
+      featureList.push(reportList[i]?.reportFeature);
+    }
+  }
+  const set = new Set(featureList);
+  const features: Array<string | undefined> = Array.from(set);
   return (
     <>
-      <Flex direction="column" bgColor="pink.50">
+      <Flex direction="column">
         {selectedPharmacy !== null ? (
           <PharmacyInfo
             name={selectedPharmacy?.name}
@@ -62,7 +73,7 @@ export const DetailPharmacy = memo(() => {
         ) : (
           <></>
         )}
-
+        <FeatureLists features={features} />
         <ReportInfo>
           {reportList.map((report) => (
             <Tr key={report?.id}>
@@ -85,7 +96,7 @@ export const DetailPharmacy = memo(() => {
           ))}
         </ReportInfo>
       </Flex>
-      <ReportDetailModal isOpen={isOpen} onClose={onClose} name={selectReportName} calcCase={selectReportCase} />
+      <PrimaryModal isOpen={isOpen} onClose={onClose} name={selectReportName} text={`${selectReportCase}が算定されるケース`} />
     </>
   );
 });

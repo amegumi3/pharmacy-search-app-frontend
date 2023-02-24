@@ -16,12 +16,12 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id" | "shuttered">> = memo((props
           <Heading as="h6" my={23}>
             {name}
           </Heading>
-          <Stack spacing={1} mb={3}>
-            <Text> ☎︎ {tel}</Text>
+          <Stack spacing={1}>
             <Box>
               <Text> {postalCode}</Text>
               <Text> {adress}</Text>
             </Box>
+            <Text> ☎︎ {tel}</Text>
           </Stack>
         </Flex>
         <Flex m={4}>

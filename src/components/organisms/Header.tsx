@@ -1,4 +1,5 @@
-import { Button, Flex, Link } from "@chakra-ui/react";
+import { Flex, HStack } from "@chakra-ui/react";
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 import { HeaderLogo } from "components/atoms/logo/HeaderLogo";
 import { useCurrentUser } from "hooks/auth/useCurrentUer";
 import { useSignOut } from "hooks/auth/useSignOut";
@@ -18,12 +19,28 @@ export const Header: VFC = memo(() => {
   }, [handleGetCurrentUser]);
 
   const onClickSignIn = useCallback(() => history.push("/signin"), [history]);
+  const onClickImport = useCallback(() => history.push("/import"), [history]);
   const onClickSignOut = (e: MouseEvent<HTMLButtonElement>) => handleSignOut(e);
 
   return (
     <Flex as="nav" bg="blue.100" padding={{ base: 3, md: 5 }} justify="space-between">
       <HeaderLogo />
-      <Flex fontSize="sm">{isSignedIn ? <Button onClick={onClickSignOut}>ログアウト</Button> : <Link onClick={onClickSignIn}>ログイン</Link>}</Flex>
+      <Flex fontSize="sm">
+        {isSignedIn ? (
+          <HStack spacing={1}>
+            <PrimaryButton submit={onClickImport} bg={"gray.100"}>
+              データ登録
+            </PrimaryButton>
+            <PrimaryButton submit={onClickSignOut} bg={"gray.100"}>
+              ログアウト
+            </PrimaryButton>
+          </HStack>
+        ) : (
+          <PrimaryButton submit={onClickSignIn} bg={"gray.100"}>
+            ログイン
+          </PrimaryButton>
+        )}
+      </Flex>
     </Flex>
   );
 });
