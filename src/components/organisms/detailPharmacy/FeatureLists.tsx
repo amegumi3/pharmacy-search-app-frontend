@@ -27,7 +27,7 @@ export const FeatureLists: VFC<Props> = memo((props) => {
             <Box>
               {features.map((feature, index: number) => (
                 <Box key={index}>
-                  <Text>{feature}</Text>
+                  <Text>・{feature}</Text>
                 </Box>
               ))}
             </Box>

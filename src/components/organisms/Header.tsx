@@ -18,7 +18,6 @@ export const Header: VFC = memo(() => {
     handleGetCurrentUser();
   }, [handleGetCurrentUser]);
 
-  const onClickSignIn = useCallback(() => history.push("/signin"), [history]);
   const onClickImport = useCallback(() => history.push("/import"), [history]);
   const onClickSignOut = (e: MouseEvent<HTMLButtonElement>) => handleSignOut(e);
 
@@ -36,9 +35,7 @@ export const Header: VFC = memo(() => {
             </PrimaryButton>
           </HStack>
         ) : (
-          <PrimaryButton submit={onClickSignIn} bg={"gray.100"}>
-            ログイン
-          </PrimaryButton>
+          <></>
         )}
       </Flex>
     </Flex>

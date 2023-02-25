@@ -7,14 +7,10 @@ import { AuthContext } from "providers/AuthProvider";
 export const Home: VFC = memo(() => {
   const { currentUser, isSignedIn } = useContext(AuthContext);
   const [searchWord, setSearchWord] = useState<string>("");
-
   return (
     <>
-      <SearchArea name={isSignedIn && currentUser ? currentUser.name : "ゲスト"}
-      searchWord={searchWord}
-      setSearchWord={setSearchWord}
-      />
-        <PharmacyCard />
+      <SearchArea name={isSignedIn && currentUser ? "管理者" : ""} searchWord={searchWord} setSearchWord={setSearchWord} />
+      <PharmacyCard />
     </>
   );
 });
