@@ -8,7 +8,6 @@ import { SignUpParams } from "types/auth";
 
 export const useSignUp = () => {
   const history = useHistory();
-  const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
@@ -20,7 +19,6 @@ export const useSignUp = () => {
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
       const params: SignUpParams = {
-        name: name,
         email: email,
         password: password,
         passwordConfirmation: passwordConfirmation,
@@ -46,7 +44,7 @@ export const useSignUp = () => {
         setLoading(false);
       }
     },
-    [email, history, name, password, passwordConfirmation, setCurrentUser, setIsSignedIn, setLoading, showMessage]
+    [email, history, password, passwordConfirmation, setCurrentUser, setIsSignedIn, setLoading, showMessage]
   );
-  return { name, setName, email, setEmail, password, setPassword, passwordConfirmation, setPasswordConfirmation, handleSubmit, onCLickSignIn };
+  return { email, setEmail, password, setPassword, passwordConfirmation, setPasswordConfirmation, handleSubmit, onCLickSignIn };
 };

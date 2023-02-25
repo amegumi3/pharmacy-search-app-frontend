@@ -12,19 +12,22 @@ export const ReportInfo: VFC<Props> = memo((props) => {
   return (
     <>
       <Card padding={4} width={"100%"}>
-        <Box mt={2} mx={2} p={2} w="20%">
-          <Heading size="ml" ml={3}>
-            ー 届出基準一覧 ー
+        <Box mt={2} mx={2} p={2} mb={3}>
+          <Heading fontSize="2xl" ml={3}>
+            届 出 基 準 一 覧
           </Heading>
         </Box>
+
         <TableContainer bgColor="orange.50">
           <Table variant="simple" fontSize={{ base: "sm", md: "lg" }}>
             <TableCaption>2023年1月時点</TableCaption>
-            <Thead textAlign="center">
+            <Thead>
               <Tr bgColor="orange.100">
                 <Th fontSize={{ base: "md", md: "lg" }}>届出基準名</Th>
                 <Th fontSize={{ base: "md", md: "lg" }}>点数</Th>
-                <Th textAlign="center">算定予想</Th>
+                <Th fontSize={{ base: "md", md: "lg" }} textAlign="center">
+                  算定予想
+                </Th>
               </Tr>
             </Thead>
             <Tbody>{children}</Tbody>
