@@ -1,10 +1,11 @@
 import { Box, Flex, Heading, Stack, Text } from "@chakra-ui/react";
+import { ChangeEvent, Dispatch, memo, SetStateAction, VFC } from "react";
+
 import { CenterBox } from "components/atoms/form/CenterBox";
 import { MainVisual } from "components/atoms/form/MainVisual";
 import { SearchInput } from "components/molecules/SearchInput";
 import { useSearchPharmacies } from "hooks/useSearchPharmacies";
 import { homeMainImage } from "lib";
-import { ChangeEvent, Dispatch, memo, SetStateAction, VFC } from "react";
 
 type Props = {
   name: string;

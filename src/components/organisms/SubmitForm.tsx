@@ -1,6 +1,7 @@
 import { Divider, Heading, Stack } from "@chakra-ui/react";
-import { CenterBox } from "components/atoms/form/CenterBox";
 import { memo, ReactNode, VFC } from "react";
+
+import { CenterBox } from "components/atoms/form/CenterBox";
 
 type Props = {
   children: ReactNode;

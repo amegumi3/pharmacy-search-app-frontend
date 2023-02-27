@@ -1,16 +1,14 @@
-import { memo, useCallback, useContext, useEffect, useState } from "react";
+import { memo, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Flex, Td, Tr, useDisclosure } from "@chakra-ui/react";
 
 import { PharmacyContext } from "providers/PharmacyProvider";
-import { show } from "lib/api/pharmacy";
-import { Report } from "types/Report";
+import { useDetailPharmacy } from "hooks/useDetailPharmacy";
+import { QuestionButton } from "components/atoms/button/QuestionButton";
+import { PrimaryModal } from "components/molecules/PrimaryModal";
+import { FeatureLists } from "components/organisms/detailPharmacy/FeatureLists";
 import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
-import { useMessage } from "hooks/useMessage";
-import { PrimaryModal } from "components/molecules/PrimaryModal";
-import { QuestionButton } from "components/atoms/button/QuestionButton";
-import { FeatureLists } from "components/organisms/detailPharmacy/FeatureLists";
 
 export const DetailPharmacy = memo(() => {
   const { onOpen, isOpen, onClose } = useDisclosure();
@@ -18,48 +16,20 @@ export const DetailPharmacy = memo(() => {
   const [selectReportName, setSelectReportName] = useState<string | null>(null);
   const { id } = useParams<{ id: any }>();
   const { selectedPharmacy } = useContext(PharmacyContext);
-  const [reportList, setReportList] = useState<Array<Report | null>>([]);
-  const { showMessage } = useMessage();
 
-  const getReports = useCallback(
-    async (id: number) => {
-      try {
-        const res = await show(id);
-        const result = res.data;
-        setReportList(result);
-        console.log(res);
-        if (res.data.length === 0) {
-          showMessage({ status: "info", title: "届出している施設基準はありません" });
-        }
-      } catch (err) {
-        console.log(err);
-        showMessage({ status: "error", title: "表示に失敗しました" });
-      }
-    },
-    [showMessage]
-  );
+  const { getReports, reportList, features } = useDetailPharmacy(id);
 
   useEffect(() => {
-    getReports(id);
+    getReports();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const onClickButton = (name: any, calcCase: any) => {
+  const onClickButton = (name: string, calcCase: string) => {
     setSelectReportCase(calcCase);
     setSelectReportName(name);
     onOpen();
   };
-  const featureList: Array<string | undefined> = [];
-  if (reportList) {
-    for (var i: number = 0; i < reportList?.length; i++) {
-      if (reportList[i]?.reportFeature === null) {
-        continue;
-      }
-      featureList.push(reportList[i]?.reportFeature);
-    }
-  }
-  const set = new Set(featureList);
-  const features: Array<string | undefined> = Array.from(set);
+
   return (
     <>
       <Flex direction="column">
@@ -75,7 +45,7 @@ export const DetailPharmacy = memo(() => {
         )}
         <FeatureLists features={features} />
         <ReportInfo>
-          {reportList.map((report) => (
+          {reportList.map((report: any) => (
             <Tr key={report?.id}>
               {report?.basic === true ? (
                 <>
@@ -96,7 +66,7 @@ export const DetailPharmacy = memo(() => {
           ))}
         </ReportInfo>
       </Flex>
-      <PrimaryModal isOpen={isOpen} onClose={onClose} name={selectReportName} text={`${selectReportCase}が算定されるケース`} />
+      <PrimaryModal isOpen={isOpen} onClose={onClose} name={`${selectReportName}が算定されるケース`} text={selectReportCase} />
     </>
   );
 });

@@ -1,6 +1,7 @@
 import { Center, Heading, Input, Stack, Text,  WrapItem } from "@chakra-ui/react";
-import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 import { memo, MouseEvent, VFC } from "react";
+
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 type Props = {
   title: string;

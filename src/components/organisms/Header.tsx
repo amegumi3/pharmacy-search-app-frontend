@@ -1,12 +1,12 @@
 import { Flex, HStack } from "@chakra-ui/react";
-import { PrimaryButton } from "components/atoms/button/PrimaryButton";
-import { HeaderLogo } from "components/atoms/logo/HeaderLogo";
+import { useHistory } from "react-router-dom";
+import { memo, MouseEvent, useCallback, useContext, useEffect, VFC } from "react";
+
 import { useCurrentUser } from "hooks/auth/useCurrentUer";
 import { useSignOut } from "hooks/auth/useSignOut";
-
 import { AuthContext } from "providers/AuthProvider";
-import { memo, MouseEvent, useCallback, useContext, useEffect, VFC } from "react";
-import { useHistory } from "react-router-dom";
+import { HeaderLogo } from "components/atoms/logo/HeaderLogo";
+import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 export const Header: VFC = memo(() => {
   const history = useHistory();
