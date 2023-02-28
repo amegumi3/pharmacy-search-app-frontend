@@ -5,10 +5,10 @@ const theme = extendTheme({
     global: {
       body: {
         backgroundColor: "gray.100",
-        color: "blue.900"
-      }
-    }
-  }
+        color: "blue.900",
+      },
+    },
+  },
 });
 
 export default theme;

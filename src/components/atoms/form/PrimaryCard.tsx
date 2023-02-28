@@ -8,7 +8,7 @@ type Props = {
   width?: string;
 };
 
-export const Card: VFC<Props> = (props) => {
+export const PrimaryCard: VFC<Props> = (props) => {
   const { children, bg = "gray.50", width = "90%", padding } = props;
   return (
     <VStack mt={23}>

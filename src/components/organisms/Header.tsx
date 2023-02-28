@@ -7,6 +7,7 @@ import { useSignOut } from "hooks/auth/useSignOut";
 import { AuthContext } from "providers/AuthProvider";
 import { HeaderLogo } from "components/atoms/logo/HeaderLogo";
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
+import { PrologueButton } from "components/molecules/PrologueButton";
 
 export const Header: VFC = memo(() => {
   const history = useHistory();
@@ -19,6 +20,7 @@ export const Header: VFC = memo(() => {
   }, [handleGetCurrentUser]);
 
   const onClickImport = useCallback(() => history.push("/import"), [history]);
+  const onClickPrologue = useCallback(() => history.push("/prologue"), [history]);
   const onClickSignOut = (e: MouseEvent<HTMLButtonElement>) => handleSignOut(e);
 
   return (
@@ -35,7 +37,7 @@ export const Header: VFC = memo(() => {
             </PrimaryButton>
           </HStack>
         ) : (
-          <></>
+          <PrologueButton show={onClickPrologue} />
         )}
       </Flex>
     </Flex>

@@ -1,7 +1,7 @@
 import { Box, Flex, Stack, Text, useDisclosure } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 
-import { Card } from "components/atoms/form/Cad";
+import { PrimaryCard } from "components/atoms/form/PrimaryCard";
 import { PrimaryModal } from "../../molecules/PrimaryModal";
 import { InfoButton } from "components/atoms/button/InfoButton";
 
@@ -18,7 +18,7 @@ export const FeatureLists: VFC<Props> = memo((props) => {
   return (
     <Flex ml={2}>
       {features.length > 0 ? (
-        <Card padding={3} width={"100%"} bg={"yellow.50"}>
+        <PrimaryCard padding={3} width={"100%"} bg={"yellow.50"}>
           <Stack spacing={1}>
             <Text fontWeight="bold" fontSize="lg">
               こんな特徴がある薬局です
@@ -32,7 +32,7 @@ export const FeatureLists: VFC<Props> = memo((props) => {
               ))}
             </Box>
           </Stack>
-        </Card>
+        </PrimaryCard>
       ) : (
         <Box></Box>
       )}
