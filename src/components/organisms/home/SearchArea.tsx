@@ -5,7 +5,7 @@ import { CenterBox } from "components/atoms/form/CenterBox";
 import { MainVisual } from "components/atoms/form/MainVisual";
 import { SearchInput } from "components/molecules/SearchInput";
 import { useSearchPharmacies } from "hooks/useSearchPharmacies";
-import { homeMainImage } from "lib";
+import { homeMainImage } from "lib/imageLink";
 
 type Props = {
   name: string;

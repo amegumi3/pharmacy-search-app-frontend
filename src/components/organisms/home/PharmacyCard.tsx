@@ -4,7 +4,7 @@ import { Box, Heading, HStack, Image, Spacer, Stack, Text, VStack } from "@chakr
 
 import { useSelectPharmacy } from "hooks/useSelectPharmacy";
 import { PharmacyContext } from "providers/PharmacyProvider";
-import { pharmacyImage } from "lib";
+import { pharmacyImage } from "lib/imageLink";
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 export const PharmacyCard: VFC = memo(() => {

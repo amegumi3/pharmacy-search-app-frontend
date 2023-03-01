@@ -9,6 +9,7 @@ import { Import } from "components/pages/Import";
 import { PharmacyProvider } from "providers/PharmacyProvider";
 import { DetailPharmacy } from "components/pages/DetailPharmacy";
 import { Page404 } from "components/pages/Page404";
+import { Prologue } from "components/pages/Prologue";
 
 export const Router: VFC = memo(() => {
   return (
@@ -21,6 +22,7 @@ export const Router: VFC = memo(() => {
           </PharmacyProvider>
           <Route path="/signup" component={SignUp} />
           <Route path="/signin" component={SignIn} />
+          <Route path="/prologue" component={Prologue} />
           <Route path="/import" component={Import} />
         </HeaderLayout>
       </AuthProvider>
