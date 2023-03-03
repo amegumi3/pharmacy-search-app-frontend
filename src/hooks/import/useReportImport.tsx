@@ -11,7 +11,7 @@ export const useReportImport = () => {
 
   const getReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files && files[0].name.includes("届出施設基準一覧表")) {
+    if (files && files[0].name.includes("届出一覧表")) {
       setReportFile(files[0]);
     } else {
       showMessage({ status: "error", title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください" });
@@ -25,7 +25,7 @@ export const useReportImport = () => {
       formData.append("file", reportFile);
       setLoading(true);
       try {
-        if (reportFile.name.includes("届出施設基準一覧表")) {
+        if (reportFile.name.includes("届出一覧表")) {
           await reportImoprt(formData);
           showMessage({ status: "success", title: "インポートしました" });
           setReportFile(null);

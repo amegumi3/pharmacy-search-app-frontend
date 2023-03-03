@@ -12,9 +12,9 @@ type Props = {
 
 export const PrimaryButton: VFC<Props> = (props) => {
   const { loading } = useContext(AuthContext);
-  const { children, submit, disabled, bg = "orange.100" } = props;
+  const { children, submit, disabled, bg = "orange.100"} = props;
   return (
-    <Button onClick={submit} disabled={disabled} isLoading={loading} ml={4} bg={bg} _hover={{ opacity: 0.8, cursor: "pointer" }}>
+    <Button onClick={submit} disabled={disabled} isLoading={loading} ml={4} p={5} bg={bg} _hover={{ opacity: 0.8, cursor: "pointer" }} fontSize={{base: "sm", md: "lg"}}>
       {children}
     </Button>
   );

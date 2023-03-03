@@ -10,15 +10,20 @@ type Props = {
 
 export const PrimaryModal: VFC<Props> = memo((props) => {
   const { isOpen, onClose, name, text } = props;
+  const lines = text?.split("<br>");
+  console.log(lines);
+  console.log(text?.includes("<br>"));
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
-      <ModalOverlay >
+      <ModalOverlay>
         <ModalContent>
           <ModalHeader>{name}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text>{text}</Text>
+            {lines?.map((line, index) => (
+              <Text key={index}>{line}</Text>
+            ))}
           </ModalBody>
         </ModalContent>
       </ModalOverlay>

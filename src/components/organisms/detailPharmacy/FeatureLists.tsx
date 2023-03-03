@@ -16,7 +16,7 @@ export const FeatureLists: VFC<Props> = memo((props) => {
   };
   const { features } = props;
   return (
-    <Flex ml={2}>
+    <Flex ml={2} fontSize={{base: "sm", md: "md"}}>
       {features.length > 0 ? (
         <PrimaryCard padding={3} width={"100%"} bg={"yellow.50"}>
           <Stack spacing={1}>
