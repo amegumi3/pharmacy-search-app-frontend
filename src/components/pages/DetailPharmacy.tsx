@@ -49,14 +49,14 @@ export const DetailPharmacy = memo(() => {
             <Tr key={report?.id}>
               {report?.basic === true ? (
                 <>
-                  <Td>{report?.name}</Td>
-                  <Td>{report?.point}</Td>
-                  <Td textAlign="center">◯</Td>
+                  <Td  fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
+                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.point}</Td>
+                  <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>◯</Td>
                 </>
               ) : (
                 <>
-                  <Td>{report?.name}</Td>
-                  <Td>
+                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
+                  <Td fontSize={{ base: "xs", md: "lg" }}>
                     {report?.point}
                     <QuestionButton show={() => onClickButton(report?.name, report?.calcCase)} />
                   </Td>

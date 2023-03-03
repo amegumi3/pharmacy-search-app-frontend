@@ -20,22 +20,20 @@ export const PharmacyCard: VFC = memo(() => {
   return (
     <VStack mt={7}>
       {pharmacies.map((pharmacy) => (
-        <Box w="90%" bg="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id}>
+        <Box w="90%" bg="pink.50" p={5} borderRadius="md" boxShadow="lg" key={pharmacy.id} h="130px">
           <HStack spacing={9} p={0}>
             <Image src={pharmacyImage} boxSize="55" />
-            <VStack spacing={3}>
-              <Box>
-                <Heading as="h6" size="md">
-                  {pharmacy.name}
-                </Heading>
-                <Stack spacing={0.2}>
-                  <Text>{pharmacy.postalCode}</Text>
-                  <Text>{pharmacy.adress}</Text>
+            <Box w="100%">
+              <Stack spacing={3}>
+                <Heading fontSize={{ base: "sm", md: "xl" }}>{pharmacy.name}</Heading>
+                <Stack spacing={1}>
+                  <Text fontSize={{ base: "xs", md: "md" }}>{pharmacy.postalCode}</Text>
+                  <Text fontSize={{ base: "xs", md: "md" }}>{pharmacy.adress}</Text>
                 </Stack>
-              </Box>
-            </VStack>
+              </Stack>
+            </Box>
             <Spacer />
-            <PrimaryButton submit={() => onClickPharmacy(pharmacy.id)}>詳細情報</PrimaryButton>
+            <PrimaryButton submit={() => onClickPharmacy(pharmacy.id)} >詳細情報</PrimaryButton>
           </HStack>
         </Box>
       ))}

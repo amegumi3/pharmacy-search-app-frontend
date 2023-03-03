@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# pharmacy-search-app-frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+薬局を検索し比較検討できるアプリです。<br>
 
-## Available Scripts
+![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
 
-In the project directory, you can run:
 
-### `npm start`
+# Feature
+**1. キーワード周辺の薬局探し**<br>
+  キーワード付近の薬局を見つけることができます。薬局名から検索することも可能です。
+<br>
+<br>
+**2. お薬代の節約ができる**<br>
+詳細ページで、各薬局の地方厚生局への届出情報を確認することができます。
+届出の合計点数が低い薬局を選択することで、お薬代を節約することができます。（* 届出不要で算定できる施設基準等も一部存在するため、厳密な比較をすることはできません。あくまで参考としての活用になります。）
+<br>
+**ex.**<br>
+A薬局とB薬局では93点の差があります。
+窓口での負担割合を３割とした場合、B薬局を選択することで270円ほど節約になります。
+<br>
+＜A薬局＞
+![スクリーンショット 2023-03-01 21 15 10](https://user-images.githubusercontent.com/102279858/222136646-a5382c5c-2102-43e0-8a37-c696f55fdd58.png)
+＜B薬局＞
+![スクリーンショット 2023-03-01 21 26 35](https://user-images.githubusercontent.com/102279858/222139059-316c09e0-67ce-4622-893d-8dc5ae399f1d.png)
+<br>
+<br>
+**3. 通常とは違った視点でみる薬局の特徴**
+<br>
+地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。（特徴は、届出要件を基に独自に設定しています。）
+<br>
+<br>
+# Require
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+このアプリを動かすためには、バックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)も同時に利用してください。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Note
+保険医療制度の部分については、Referenceに記載するサイトを参考に作成していますが、細かい内容に誤りがある場合があります。
+<br>
 
-### `npm test`
+# Reference
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+* 日本薬剤師会作成、調剤報酬点数表
+https://www.nichiyaku.or.jp/assets/uploads/pharmacy-info/2022/1001-list.pdf
+* 調剤報酬点数表
+https://www.mhlw.go.jp/content/12404000/000907836.pdf
+* 令和４年度調剤報酬改定の概要
+https://www.mhlw.go.jp/content/12400000/000911825.pdf
+* 特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて
+https://www.mhlw.go.jp/content/12404000/000984052.pdf
+* 平成２４年度調剤報酬改定及び薬剤関連の診療報酬改定の概要
+https://www.mhlw.go.jp/bunya/iryouhoken/iryouhoken15/dl/h24_01-06-1.pdf

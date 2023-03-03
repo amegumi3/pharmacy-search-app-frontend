@@ -8,9 +8,9 @@ export const useSearchPharmacies = () => {
   const { showMessage } = useMessage();
 
   const getPharmacies = useCallback(
-    async (word: string) => {
+    async (word: string, selectMenu: string) => {
       try {
-        const res = await index(word);
+        const res = await index(word, selectMenu);
         if (res.status === 200) {
           const result = res.data;
           setPharmacies(result);

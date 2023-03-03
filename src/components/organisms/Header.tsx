@@ -24,7 +24,7 @@ export const Header: VFC = memo(() => {
   const onClickSignOut = (e: MouseEvent<HTMLButtonElement>) => handleSignOut(e);
 
   return (
-    <Flex as="nav" bg="blue.100" padding={{ base: 3, md: 5 }} justify="space-between">
+    <Flex as="nav" bg="blue.100" p={{ base: 3, md: 5 }} justify="space-between">
       <HeaderLogo />
       <Flex fontSize="sm">
         {isSignedIn ? (
