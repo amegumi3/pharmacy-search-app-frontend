@@ -1,5 +1,5 @@
 import { Box, Flex, Heading, HStack, Wrap } from "@chakra-ui/react";
-import { ChangeEvent, useContext, VFC } from "react";
+import { useContext, VFC } from "react";
 
 import { AuthContext } from "providers/AuthProvider";
 import { Page404 } from "./Page404";
@@ -18,13 +18,7 @@ export const Import: VFC = () => {
   const { reportFile, reportSubmit, getReportFile } = useReportImport();
   const { selectMenu, setSelectMenu, destroyData } = useDestroyData();
 
-  const onChangePharmacyFile = (e: ChangeEvent<HTMLInputElement>) => getPharmacyFile(e);
   const { isSignedIn } = useContext(AuthContext);
-  const onChangePharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => getPharmacyReportFile(e);
-  const onChangeReportFile = (e: ChangeEvent<HTMLInputElement>) => getReportFile(e);
-
-  // const onClickName = (name: string) => setDestroyName(name);
-
   return (
     <>
       {isSignedIn === true ? (
@@ -34,22 +28,31 @@ export const Import: VFC = () => {
           </Flex>
           <Flex alignItems="center" justify="center">
             <Wrap justify="center" alignItems="center" spacing={8} m={5} w="xsm">
-              <FileImportForm title={"STEP 1"} text={"届出一覧表を添付"} onChange={onChangeReportFile} file={reportFile} submit={reportSubmit} />
+              <FileImportForm
+                title={"STEP 1"}
+                text={"届出一覧表を添付"}
+                onChange={getReportFile}
+                files={reportFile}
+                submit={reportSubmit}
+                disabled={reportFile.length === 1 ? false : true}
+              />
 
               <FileImportForm
                 title={"STEP 2"}
                 text={"コード内容別医療機関一覧表を添付"}
-                onChange={onChangePharmacyFile}
-                file={pharmacyFile}
+                onChange={getPharmacyFile}
+                files={pharmacyFile}
                 submit={pharmacySubmit}
+                disabled={pharmacyFile.length > 0 ? false : true}
               />
 
               <FileImportForm
                 title={"STEP 3"}
                 text={"届出受理医療機関名簿を添付"}
-                onChange={onChangePharmacyReportFile}
-                file={pharmacyReportFile}
+                onChange={getPharmacyReportFile}
+                files={pharmacyReportFile}
                 submit={pharmacyReportSubmit}
+                disabled={pharmacyReportFile.length > 0 ? false : true}
               />
 
               <TitleCard title={"データを削除する"}>

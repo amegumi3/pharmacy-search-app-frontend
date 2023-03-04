@@ -5,31 +5,37 @@ import { pharmacyImoprt } from "lib/api/pharmacy";
 import { AuthContext } from "providers/AuthProvider";
 
 export const usePharmacyImport = () => {
-  const [pharmacyFile, setPharmacyFile] = useState<File | null>(null);
+  const [pharmacyFile, setPharmacyFile] = useState<Array<File>>([]);
   const { showMessage } = useMessage();
   const { setLoading } = useContext(AuthContext);
   
   const getPharmacyFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
-    if (files && files[0].name.includes("コード内容別一覧表")) {
-      setPharmacyFile(files[0]);
-    } else {
-      showMessage({ status: "error", title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください" });
+    if (files) {
+      const pharmacyFiles = Array.from(files).filter(file =>
+        file.name.includes("コード内容別一覧表")
+      );
+      if (pharmacyFiles.length === files.length) {
+        setPharmacyFile(pharmacyFiles);
+      } else {
+        showMessage({
+          status: "error",
+          title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください。全てのファイルが正しくセットされる必要があります。",
+        });
+      }
     }
   };
-
   const pharmacySubmit = useCallback(async () => {
-    console.log(pharmacyFile);
     if (pharmacyFile) {
       const formData = new FormData();
-      formData.append("file", pharmacyFile);
+      pharmacyFile.forEach(file => {
+        formData.append("files[]", file);
+      });
       setLoading(true);
       try {
-        if (pharmacyFile.name.includes("コード内容別一覧表")) {
-          await pharmacyImoprt(formData);
-          showMessage({ status: "success", title: "インポートしました" });
-          setPharmacyFile(null);
-        }
+        await pharmacyImoprt(formData);
+        showMessage({ status: "success", title: "インポートしました" });
+        setPharmacyFile([]);
       } catch (err) {
         console.log(err);
         showMessage({ status: "error", title: "インポートに失敗しました" });
