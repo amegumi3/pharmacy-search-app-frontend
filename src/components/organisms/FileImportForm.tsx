@@ -7,20 +7,21 @@ import { TitleCard } from "components/molecules/TitleCard";
 type Props = {
   title: string;
   text: string;
-  file: File | null;
+  files: File[];
   onChange: any;
   submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
+  disabled: boolean;
 };
 
 export const FileImportForm: VFC<Props> = memo((props) => {
-  const { title, text, onChange, file, submit } = props;
+  const { title, text, onChange, submit, disabled } = props;
   return (
     <TitleCard title={title} baseSize={"3xl"} overSize={"4xl"}>
       <Stack spacing={6} py={4}>
         <Text textAlign="center">{text}</Text>
-        <Input type="file" accept=".xlsx" onChange={onChange} />
+        <Input type="file" multiple accept=".xlsx" onChange={onChange} />
       </Stack>
-      <PrimaryButton disabled={!file} submit={submit}>
+      <PrimaryButton  submit={submit} disabled={disabled}>
         登録
       </PrimaryButton>
     </TitleCard>
