@@ -12,8 +12,15 @@ export const usePharmacyReportImport = () => {
   const getPharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const pharmacyReportFiles = Array.from(files).filter(file =>
-        file.name.includes("届出受理医療機関名簿")
+      const pharmacyReportFiles = Array.from(files).filter(file => {
+        if (file.name.includes("届出受理医療機関名簿")) {
+          return true;
+        } else if (file.name.includes("shisetsu")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
       );
       if (pharmacyReportFiles.length === files.length) {
         setPharmacyReportFile(pharmacyReportFiles);

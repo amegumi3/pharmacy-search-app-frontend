@@ -12,7 +12,17 @@ export const usePharmacyImport = () => {
   const getPharmacyFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const pharmacyFiles = Array.from(files).filter((file) => file.name.includes("コード内容別一覧表"));
+      const pharmacyFiles = Array.from(files).filter((file) => {
+        if (file.name.includes("コード内容別一覧表")) {
+          return true;
+        } else if (file.name.includes("yakkyoku") && !file.name.includes("shisetsu")) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+
+      console.log(files);
       if (pharmacyFiles.length === files.length) {
         setPharmacyFile(pharmacyFiles);
       } else {
