@@ -8,7 +8,7 @@ export const Prologue: VFC = memo(() => {
   return (
     <Box p={43} whiteSpace="break-spaces">
       <Box mb="20px">
-        <Heading textAlign="center" size="2xl">
+        <Heading textAlign="center" fontSize={{ base: "3xl", md: "4xl" }}>
           ~ About App ~
         </Heading>
       </Box>
@@ -17,7 +17,7 @@ export const Prologue: VFC = memo(() => {
           {PrologueLists.map((list, index) => (
             <TitleCard title={list.title} key={index}>
               <Stack spacing={16}>
-                <Text fontSize="lg">{list.text}</Text>
+                <Text fontSize={{ base: "sm", md: "lg" }}>{list.text}</Text>
                 <Flex justify="center">
                   <list.image />
                 </Flex>

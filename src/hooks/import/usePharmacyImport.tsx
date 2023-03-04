@@ -8,13 +8,11 @@ export const usePharmacyImport = () => {
   const [pharmacyFile, setPharmacyFile] = useState<Array<File>>([]);
   const { showMessage } = useMessage();
   const { setLoading } = useContext(AuthContext);
-  
+
   const getPharmacyFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const pharmacyFiles = Array.from(files).filter(file =>
-        file.name.includes("コード内容別一覧表")
-      );
+      const pharmacyFiles = Array.from(files).filter((file) => file.name.includes("コード内容別一覧表"));
       if (pharmacyFiles.length === files.length) {
         setPharmacyFile(pharmacyFiles);
       } else {
@@ -28,7 +26,7 @@ export const usePharmacyImport = () => {
   const pharmacySubmit = useCallback(async () => {
     if (pharmacyFile) {
       const formData = new FormData();
-      pharmacyFile.forEach(file => {
+      pharmacyFile.forEach((file) => {
         formData.append("files[]", file);
       });
       setLoading(true);

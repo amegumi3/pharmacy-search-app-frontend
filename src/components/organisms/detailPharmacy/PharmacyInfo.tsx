@@ -10,25 +10,25 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id" | "shuttered">> = memo((props
 
   return (
     <Box>
+      <Flex justify="end" mr={4} mt={2}>
+        <Link onClick={onClickBack} fontSize={{ base: "sm", md: "lg" }}>
+          戻る
+        </Link>
+      </Flex>
       <Flex justifyContent="space-between" ml={23}>
         <Flex direction="column">
-          <Heading as="h6" my={23}>
+          <Heading my={23} fontSize={{ base: "2xl", md: "4xl" }}>
             {name}
           </Heading>
           <Box>
             <Stack spacing={1}>
-              <Box fontSize={{ base: "md", md: "lg" }}>
+              <Box fontSize={{ base: "sm", md: "lg" }}>
                 <Text> {postalCode}</Text>
                 <Text> {adress}</Text>
               </Box>
-              <Text> ☎︎ {tel}</Text>
+              <Text fontSize={{ base: "sm", md: "lg" }}> ☎︎ {tel}</Text>
             </Stack>
           </Box>
-        </Flex>
-        <Flex m={4}>
-          <Link onClick={onClickBack} fontSize={{ base: "sm", md: "lg" }}>
-            戻る
-          </Link>
         </Flex>
       </Flex>
     </Box>

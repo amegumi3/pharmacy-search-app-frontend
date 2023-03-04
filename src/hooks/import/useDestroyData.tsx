@@ -10,7 +10,7 @@ export const useDestroyData = () => {
   const [selectMenu, setSelectMenu] = useState<string>("削除データを選択してください");
 
   const destroyData = useCallback(async () => {
-    alert(`${selectMenu}してもいいですか？`)
+    alert(`${selectMenu}してもいいですか？`);
     setLoading(true);
     try {
       if (selectMenu === "届出情報を削除") {
@@ -29,7 +29,7 @@ export const useDestroyData = () => {
     } finally {
       setLoading(false);
       setSelectMenu("削除データを選択してください");
-    } 
+    }
   }, [selectMenu, setLoading, showMessage]);
   return { destroyData, selectMenu, setSelectMenu };
 };

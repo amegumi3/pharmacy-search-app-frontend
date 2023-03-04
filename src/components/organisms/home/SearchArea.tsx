@@ -23,22 +23,30 @@ export const SearchArea: VFC<Props> = memo((props) => {
 
   return (
     <MainVisual bgImage={homeMainImage}>
+      <Text p={4}>{name}</Text>
       <Flex p={5}>
-        <Text>{name}</Text>
-        <CenterBox height={"40vh"}>
+        <CenterBox baseHeight={"40vh"} overHeight={"20vh"}>
           <Stack>
             <Heading>Search</Heading>
             <Text size="md">{selectMenu}薬局を検索 </Text>
           </Stack>
           <Box mt={4}>
-            <VStack spacing={3} display={{base: "sm", md:"md"}}>
-              <SideMenu selectMenu={selectMenu} setSelectMenu={setSelectMenu} menuList={["周辺スポットから", "薬局名から"]} />
+            <VStack spacing={3} display={{ base: "sm", md: "md" }}>
+              <SideMenu selectMenu={selectMenu} setSelectMenu={setSelectMenu} menuList={["周辺スポットから", "住所から", "薬局名から"]} />
               <SearchInput
                 value={searchWord}
                 onChange={onChangeInput}
                 disabled={!searchWord}
                 submit={onClickSearch}
-                placeholder={selectMenu === "周辺スポットから"  ? ("例：　〇〇駅、〇〇市立□□小学校") : selectMenu === "薬局名から" ? ("薬局名を入力") : ""}
+                placeholder={
+                  selectMenu === "周辺スポットから"
+                    ? "例：　〇〇市立□□小学校"
+                    : selectMenu === "薬局名から"
+                    ? "薬局名を入力"
+                    : selectMenu === "住所から"
+                    ? "県名を除いた市区町村以降の住所を入力"
+                    : ""
+                }
               />
             </VStack>
           </Box>
