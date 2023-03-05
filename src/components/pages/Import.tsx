@@ -39,7 +39,7 @@ export const Import: VFC = () => {
 
               <FileImportForm
                 title={"STEP 2"}
-                text={"コード内容別医療機関一覧表を添付"}
+                text={"コード内容別一覧表を添付"}
                 onChange={getPharmacyFile}
                 files={pharmacyFile}
                 submit={pharmacySubmit}

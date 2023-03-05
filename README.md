@@ -40,15 +40,32 @@
 このアプリを動かすためには、バックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)も同時に利用してください。
 <br>
 <br>
-# Note
-
-**ファイルをインポートする際の注意点** <br>
+# Import
+**ファイルのインポートについて**
+* インポートするファイルは、各地方厚生局からexcelファイルをダウンロードしてください。全ての都道府県のexcelファイルを取得する必要はありませんが、コード一覧表と届出受理医療機関名簿は必ずセットで用意してください。
+* 北海道の薬局情報を利用する場合は、excelファイルをダウンロード後、ファイル名をコード内容別、届出受理医療機関名簿に変更のうえインポートしてください。
 * 届出受理医療機関名簿は、最後にインポートしてください。届出一覧表とコード内容別医療機関一覧表の中間テーブルとしての役割をしています。
-* 全ての都道府県のデータをインポートする必要はありませんが、コード一覧表と届出受理医療機関名簿は必ずセットにしてインポートしてください。
-* インポートが完了するには１時間半程度がかかります。<br>
-**その他の注意点**<br>
-* 保険医療制度の部分については、Referenceに記載するサイトを参考に作成していますが、細かい内容に誤りがある場合があります。
-<br>
+
+**excelファイルのリンク**<br>
+北海道:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/code_ichiran.html)・
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/todokede_juri_ichiran.html)<br>
+東北:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/itiran.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/documents/201805koushin.html)<br>
+関東甲信越:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/shitei.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)<br>
+東海北陸:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00349.html)<br>
+近畿:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kinki/gyomu/gyomu/hoken_kikan/shitei_jokyo.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/gyomu/gyomu/hoken_kikan/shitei_jokyo_00004.html)<br>
+九州:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00006.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00007.html)
+
 
 # Reference
 
