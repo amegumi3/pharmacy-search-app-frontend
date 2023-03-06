@@ -1,6 +1,6 @@
 import { memo, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Flex, Td, Tr, useDisclosure } from "@chakra-ui/react";
+import { Box, Flex, Td, Tr, useDisclosure } from "@chakra-ui/react";
 
 import { PharmacyContext } from "providers/PharmacyProvider";
 import { useDetailPharmacy } from "hooks/useDetailPharmacy";
@@ -31,7 +31,7 @@ export const DetailPharmacy = memo(() => {
   };
 
   return (
-    <>
+    <Box mb={100}>
       <Flex direction="column">
         {selectedPharmacy !== null ? (
           <PharmacyInfo
@@ -39,6 +39,7 @@ export const DetailPharmacy = memo(() => {
             tel={selectedPharmacy?.tel}
             postalCode={selectedPharmacy?.postalCode}
             adress={selectedPharmacy?.adress}
+            shuttered={selectedPharmacy?.shuttered}
           />
         ) : (
           <></>
@@ -49,9 +50,11 @@ export const DetailPharmacy = memo(() => {
             <Tr key={report?.id}>
               {report?.basic === true ? (
                 <>
-                  <Td  fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
+                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
                   <Td fontSize={{ base: "xs", md: "lg" }}>{report?.point}</Td>
-                  <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>◯</Td>
+                  <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>
+                    ◯
+                  </Td>
                 </>
               ) : (
                 <>
@@ -67,6 +70,6 @@ export const DetailPharmacy = memo(() => {
         </ReportInfo>
       </Flex>
       <PrimaryModal isOpen={isOpen} onClose={onClose} name={`${selectReportName}が算定されるケース`} text={selectReportCase} />
-    </>
+    </Box>
   );
 });

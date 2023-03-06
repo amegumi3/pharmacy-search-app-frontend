@@ -6,7 +6,7 @@ import { PrologueLists } from "lib/prologueList";
 
 export const Prologue: VFC = memo(() => {
   return (
-    <Box p={43} whiteSpace="break-spaces">
+    <Box p={43} whiteSpace="break-spaces" mb={100}>
       <Box mb="20px">
         <Heading textAlign="center" fontSize={{ base: "3xl", md: "4xl" }}>
           ~ About App ~
@@ -25,7 +25,9 @@ export const Prologue: VFC = memo(() => {
             </TitleCard>
           ))}
           <Box>
-            <Text fontSize={{ base: "12px", md: "15px" }}>* 一部届出不要で算定できる施設基準等も存在します。あくまで参考としてご活用ください。</Text>
+            <Text fontSize={{ base: "12px", md: "15px" }}>
+              * 関連通知等により表記のものと異なる可能性があります。点数の比較については参考としてご活用ください。
+            </Text>
           </Box>
         </Wrap>
       </Flex>

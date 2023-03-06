@@ -21,7 +21,6 @@ export const usePharmacyImport = () => {
           return false;
         }
       });
-
       console.log(files);
       if (pharmacyFiles.length === files.length) {
         setPharmacyFile(pharmacyFiles);
@@ -34,12 +33,12 @@ export const usePharmacyImport = () => {
     }
   };
   const pharmacySubmit = useCallback(async () => {
+    setLoading(true);
     if (pharmacyFile) {
       const formData = new FormData();
       pharmacyFile.forEach((file) => {
         formData.append("files[]", file);
       });
-      setLoading(true);
       try {
         await pharmacyImoprt(formData);
         showMessage({ status: "success", title: "インポートしました" });

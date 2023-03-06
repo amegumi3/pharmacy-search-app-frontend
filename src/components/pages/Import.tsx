@@ -22,7 +22,7 @@ export const Import: VFC = () => {
   return (
     <>
       {isSignedIn === true ? (
-        <Box>
+        <Box mb={100}>
           <Flex justify="center" mt={42} mb={3}>
             <Heading fontSize={{ base: "xl", md: "3xl" }}>ファイル登録フォーム</Heading>
           </Flex>

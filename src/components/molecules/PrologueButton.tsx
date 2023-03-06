@@ -9,7 +9,7 @@ type Props = {
 export const PrologueButton: VFC<Props> = (props) => {
   const { show } = props;
   return (
-    <Button onClick={show}>
+    <Button onClick={show} _focus={{ boxShadow: "none" }} _hover={{ opacity: 0.8, cursor: "pointer" }}>
       <Flex display="column" alignItems="center">
         <Center>
           <FaSeedling size={22} />

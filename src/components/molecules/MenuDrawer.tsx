@@ -1,4 +1,4 @@
-import { Button, Drawer, DrawerBody, DrawerContent, DrawerOverlay } from "@chakra-ui/react";
+import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay } from "@chakra-ui/react";
 import { MouseEvent, VFC } from "react";
 
 type Props = {
@@ -14,6 +14,8 @@ export const MenuDrawer: VFC<Props> = (props) => {
     <Drawer placement="left" size="xs" onClose={onClose} isOpen={isOpen}>
       <DrawerOverlay>
         <DrawerContent>
+          <DrawerCloseButton _focus={{ boxShadow: "none" }} />
+          <DrawerHeader textAlign="center"></DrawerHeader>
           <DrawerBody p={0}>
             <Button onClick={onClickImport} bg={"white"} w={"100%"}>
               データ登録

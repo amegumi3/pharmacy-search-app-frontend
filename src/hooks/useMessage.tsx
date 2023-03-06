@@ -11,7 +11,7 @@ export const useMessage = () => {
   const showMessage = useCallback(
     (props: Props) => {
       const { title, status } = props;
-      toast({ title, status, position: "top", duration: 2000, isClosable: true });
+      toast({ title, status, position: "top", duration: 3000, isClosable: true });
     },
     [toast]
   );

@@ -25,6 +25,7 @@ export const PrimaryButton: VFC<Props> = (props) => {
       w={w}
       _hover={{ opacity: 0.8, cursor: "pointer" }}
       fontSize={{ base: "xs", md: "lg" }}
+      _focus={{ boxShadow: "none" }}
     >
       {children}
     </Button>

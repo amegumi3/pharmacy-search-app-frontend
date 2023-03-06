@@ -1,6 +1,6 @@
 import { memo, useContext, VFC } from "react";
 import { useHistory } from "react-router-dom";
-import { Box, Heading, HStack, Image, Stack, Text, VStack } from "@chakra-ui/react";
+import { Box, Heading, HStack, Image, Stack, Tag, Text, VStack } from "@chakra-ui/react";
 
 import { useSelectPharmacy } from "hooks/useSelectPharmacy";
 import { PharmacyContext } from "providers/PharmacyProvider";
@@ -25,7 +25,19 @@ export const PharmacyCard: VFC = memo(() => {
             <Image src={pharmacyImage} boxSize={{ base: 45, md: 55 }} />
             <Box w="100%">
               <Stack spacing={3}>
-                <Heading fontSize={{ base: "sm", md: "xl" }}>{pharmacy.name}</Heading>
+                <Box>
+                  <Heading fontSize={{ base: "sm", md: "xl" }}>
+                    {pharmacy.name}
+                    {pharmacy.shuttered ? (
+                      <Tag colorScheme="red" size="md">
+                        *休業中
+                      </Tag>
+                    ) : (
+                      <></>
+                    )}
+                  </Heading>
+                </Box>
+
                 <Stack spacing={1}>
                   <Text fontSize="md" display={{ base: "none", md: "block" }}>
                     {pharmacy.postalCode}

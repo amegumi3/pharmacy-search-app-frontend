@@ -12,7 +12,7 @@ export const usePharmacyReportImport = () => {
   const getPharmacyReportFile = (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
-      const pharmacyReportFiles = Array.from(files).filter(file => {
+      const pharmacyReportFiles = Array.from(files).filter((file) => {
         if (file.name.includes("届出受理医療機関名簿")) {
           return true;
         } else if (file.name.includes("shisetsu")) {
@@ -20,27 +20,29 @@ export const usePharmacyReportImport = () => {
         } else {
           return false;
         }
-      }
-      );
+      });
       if (pharmacyReportFiles.length === files.length) {
         setPharmacyReportFile(pharmacyReportFiles);
       } else {
-      showMessage({ status: "error", title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください。全てのファイルが正しくセットされる必要があります。" });
+        showMessage({
+          status: "error",
+          title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください。全てのファイルが正しくセットされる必要があります。",
+        });
+      }
     }
-  }
-
   };
 
   const pharmacyReportSubmit = useCallback(async () => {
+    setLoading(true);
     if (pharmacyReportFile) {
       const formData = new FormData();
-      pharmacyReportFile.forEach(file => {
+      pharmacyReportFile.forEach((file) => {
         formData.append("files[]", file);
       });
       try {
-          await pharmacyReportImoprt(formData);
-          showMessage({ status: "success", title: "インポートしました" });
-          setPharmacyReportFile([]);
+        await pharmacyReportImoprt(formData);
+        showMessage({ status: "success", title: "インポートしました" });
+        setPharmacyReportFile([]);
       } catch (err) {
         console.log(err);
         showMessage({ status: "error", title: "インポートに失敗しました" });

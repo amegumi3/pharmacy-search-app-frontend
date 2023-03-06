@@ -1,32 +1,33 @@
 import { memo, VFC } from "react";
 import { Switch, Route } from "react-router-dom";
+
+import { HeaderLayout } from "components/template/HeaderLayout";
+import { AuthProvider } from "providers/AuthProvider";
+import { PharmacyProvider } from "providers/PharmacyProvider";
 import { Home } from "components/pages/Home";
 import { SignUp } from "components/pages/auth/SignUp";
 import { SignIn } from "components/pages/auth/SignIn";
-import { HeaderLayout } from "components/template/HeaderLayout";
-import { AuthProvider } from "providers/AuthProvider";
 import { Import } from "components/pages/Import";
-import { PharmacyProvider } from "providers/PharmacyProvider";
 import { DetailPharmacy } from "components/pages/DetailPharmacy";
-import { Page404 } from "components/pages/Page404";
 import { Prologue } from "components/pages/Prologue";
+import { Page404 } from "components/pages/Page404";
 
 export const Router: VFC = memo(() => {
   return (
-    <Switch>
-      <AuthProvider>
-        <HeaderLayout>
-          <PharmacyProvider>
+    <AuthProvider>
+      <HeaderLayout>
+        <PharmacyProvider>
+          <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/pharmacies/:id" component={DetailPharmacy} />
-          </PharmacyProvider>
-          <Route path="/signup" component={SignUp} />
-          <Route path="/signin" component={SignIn} />
-          <Route path="/prologue" component={Prologue} />
-          <Route path="/import" component={Import} />
-        </HeaderLayout>
-      </AuthProvider>
-      <Route path="*" component={Page404} />
-    </Switch>
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/signin" component={SignIn} />
+            <Route exact path="/prologue" component={Prologue} />
+            <Route exact path="/import" component={Import} />
+            <Route path="*" component={Page404} />
+          </Switch>
+        </PharmacyProvider>
+      </HeaderLayout>
+    </AuthProvider>
   );
 });
