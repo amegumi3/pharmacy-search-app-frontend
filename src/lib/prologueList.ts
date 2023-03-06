@@ -10,7 +10,7 @@ export const PrologueLists = [
   image:  FirstStepImage 
 },
 {
-  title: "薬局の届出状況を確認してみよう",
+  title: "届出状況を確認してみよう",
   text: "薬局で支払うお薬代は、薬剤料、特定保険医療材料、調剤技術料、薬学管理料の４つの要素から構成されます。\nその中でも薬学管理料と調剤技術料は、施設基準の届出状況の有無等に応じて点数に差が生じるため、薬局ごとに支払う金額が異なります。\n詳細ページから薬局がどの届出をしているのか確認してみましょう。",
   image:  SecoundStepImage 
 },
@@ -20,7 +20,7 @@ export const PrologueLists = [
   image:  ThirdStepImage 
 },
 {
-  title: "薬局の特徴から薬局を選んでみよう",
+  title: "特徴から薬局を選んでみよう",
   text: " 届出状況に基づき、サイト独自に薬局の特徴を設定しました。\n地域医療に貢献している薬局を選ぶなど、普段とは違った視点で薬局選びをすることができます。",
   image:  FourthStepImage 
 },

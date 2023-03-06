@@ -22,9 +22,9 @@ export const Import: VFC = () => {
   return (
     <>
       {isSignedIn === true ? (
-        <Box>
+        <Box mb={100}>
           <Flex justify="center" mt={42} mb={3}>
-            <Heading>ファイル登録フォーム</Heading>
+            <Heading fontSize={{ base: "xl", md: "3xl" }}>ファイル登録フォーム</Heading>
           </Flex>
           <Flex alignItems="center" justify="center">
             <Wrap justify="center" alignItems="center" spacing={8} m={5} w="xsm">
@@ -39,7 +39,7 @@ export const Import: VFC = () => {
 
               <FileImportForm
                 title={"STEP 2"}
-                text={"コード内容別医療機関一覧表を添付"}
+                text={"コード内容別一覧表を添付"}
                 onChange={getPharmacyFile}
                 files={pharmacyFile}
                 submit={pharmacySubmit}

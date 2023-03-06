@@ -2,20 +2,26 @@
 
 薬局を検索し比較検討できるアプリです。<br>
 
+地方厚生局から必要なエクセルファイルをダウンロードし、そのファイルをインポートすることで検索することができるようになります。
+（ファイルをインポートするにはアカウント登録が必要です。<br>
+
 ![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
 
+物価高騰が続き、今まで以上に節約に意識が向くようになりました。<br>
+今までは病院から一番近くの薬局に行っていましたが、お薬代が安くすむ薬局でお薬を手にいれることができれば、節約になると思い作成しました。
 
 # Feature
 **1. キーワード周辺の薬局探し**<br>
-  キーワード付近の薬局を見つけることができます。薬局名から検索することも可能です。
+キーワード付近の薬局を探すことができます。住所や薬局名から検索することも可能です。
 <br>
 <br>
 **2. お薬代の節約ができる**<br>
-詳細ページで、各薬局の地方厚生局への届出情報を確認することができます。
-届出の合計点数が低い薬局を選択することで、お薬代を節約することができます。（* 届出不要で算定できる施設基準等も一部存在するため、厳密な比較をすることはできません。あくまで参考としての活用になります。）
+詳細ページで各薬局の地方厚生局への届出情報を確認することができ、
+届出の合計点数が低い薬局を選択することで、お薬代を節約することができます。（* 関連通知等により表記のものと異なる可能性があるため、あくまで参考としての活用となります。）
+<br>
 <br>
 **ex.**<br>
-A薬局とB薬局では93点の差があります。
+下の画像ではA薬局とB薬局で93点の差があります。
 窓口での負担割合を３割とした場合、B薬局を選択することで270円ほど節約になります。
 <br>
 ＜A薬局＞
@@ -26,16 +32,40 @@ A薬局とB薬局では93点の差があります。
 <br>
 **3. 通常とは違った視点でみる薬局の特徴**
 <br>
-地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。（特徴は、届出要件を基に独自に設定しています。）
+届出要件を基に独自で薬局の特徴を設定しました。地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。
 <br>
 <br>
 # Require
 
-このアプリを動かすためには、バックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)も同時に利用してください。
-
-# Note
-保険医療制度の部分については、Referenceに記載するサイトを参考に作成していますが、細かい内容に誤りがある場合があります。
+このアプリを動かすためにはバックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)も同時に利用してください。
 <br>
+<br>
+# Import
+**ファイルのインポートについて**
+* インポートするファイルは各地方厚生局からexcelファイルをダウンロードしてください。全ての都道府県のexcelファイルを取得する必要はありませんが、コード一覧表と届出受理医療機関名簿は必ずセットで用意してください。
+* 北海道の薬局情報を利用する場合は、excelファイルをダウンロード後、ファイル名をコード内容別、届出受理医療機関名簿に変更のうえインポートしてください。
+* 届出受理医療機関名簿は、最後にインポートしてください。届出一覧表とコード内容別医療機関一覧表の中間テーブルとしての役割をしています。
+
+**excelファイルのリンク**<br>
+北海道:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/code_ichiran.html)・
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/todokede_juri_ichiran.html)<br>
+東北:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/itiran.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/documents/201805koushin.html)<br>
+関東甲信越:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/shitei.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)<br>
+東海北陸:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00349.html)<br>
+近畿:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/gyomu/gyomu/hoken_kikan/shitei_jokyo_00004.html)<br>
+九州:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00006.html)
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00007.html)
+
 
 # Reference
 

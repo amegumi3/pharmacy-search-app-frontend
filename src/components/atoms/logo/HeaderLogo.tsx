@@ -6,11 +6,11 @@ export const HeaderLogo: VFC = memo(() => {
   const history = useHistory();
   const onClickHome = useCallback(() => history.push("/"), [history]);
 
-  return(
+  return (
     <Flex as="a" _hover={{ cursor: "pointer" }} align="center">
-    <Heading as="h1" fontSize={{ base: "lg", md: "xl" }} onClick={onClickHome}>
-      PHARMACY-SEARCH
-    </Heading>
-  </Flex>
-  )
+      <Heading as="h1" fontSize={{ base: "md", md: "xl" }} onClick={onClickHome}>
+        PHARMACY-SEARCH
+      </Heading>
+    </Flex>
+  );
 });

@@ -22,7 +22,7 @@ export const useReportImport = () => {
   };
 
   const reportSubmit = useCallback(async () => {
-    console.log(reportFile);
+    setLoading(true);
     if (reportFile) {
       const formData = new FormData();
       reportFile.forEach((file) => {

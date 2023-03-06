@@ -13,9 +13,9 @@ export const SideMenu: VFC<Props> = memo((props) => {
   const onClickName = (name: string) => setSelectMenu(name);
 
   return (
-    <Box >
+    <Box>
       <Menu>
-        <MenuButton as={Button} rightIcon={<FaAngleDown />} fontSize="xs">
+        <MenuButton as={Button} rightIcon={<FaAngleDown />} fontSize="xs" _focus={{ boxShadow: "none" }}>
           {selectMenu}
         </MenuButton>
         <MenuList fontSize="sxm">

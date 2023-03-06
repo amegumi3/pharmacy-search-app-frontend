@@ -15,9 +15,7 @@ export const SearchInput: VFC<Props> = memo((props) => {
   const { value, onChange, submit, disabled, placeholder } = props;
   return (
     <Flex>
-      <Input value={value} onChange={onChange} placeholder={placeholder} p={4} fontSize={{base: "xs", md: "md"}}
-      
-      />
+      <Input value={value} onChange={onChange} placeholder={placeholder} p={4} fontSize={{ base: "xs", md: "md" }} />
       <PrimaryButton submit={submit} disabled={disabled} bg="gray.100">
         検索
       </PrimaryButton>
