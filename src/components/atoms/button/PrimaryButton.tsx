@@ -12,8 +12,9 @@ type Props = {
 };
 
 export const PrimaryButton: VFC<Props> = (props) => {
-  const { loading } = useContext(AuthContext);
   const { children, submit, disabled, bg = "orange.100", w } = props;
+  const { loading } = useContext(AuthContext);
+
   return (
     <Button
       onClick={submit}

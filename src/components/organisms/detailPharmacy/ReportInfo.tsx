@@ -1,21 +1,23 @@
 import { Box, Heading, Table, TableCaption, TableContainer, Tbody, Text, Th, Thead, Tr, useDisclosure } from "@chakra-ui/react";
+import { memo, ReactNode, VFC } from "react";
+
 import { InfoButton } from "components/atoms/button/InfoButton";
 import { PrimaryCard } from "components/atoms/form/PrimaryCard";
 import { PrimaryModal } from "components/molecules/PrimaryModal";
 import { reportTime } from "lib";
-import { memo, ReactNode, VFC } from "react";
 
 type Props = {
   children: ReactNode;
 };
 
 export const ReportInfo: VFC<Props> = memo((props) => {
-  const { onOpen, isOpen, onClose } = useDisclosure()
+  const { onOpen, isOpen, onClose } = useDisclosure();
   const { children } = props;
+  
   const onClickButton = () => {
     onOpen();
   };
-  
+
   return (
     <>
       <PrimaryCard padding={4} width={"100%"}>
@@ -25,8 +27,8 @@ export const ReportInfo: VFC<Props> = memo((props) => {
           </Heading>
         </Box>
 
-        <TableContainer bgColor="orange.50" >
-          <Table variant="simple" fontSize={{ base: "sm", md: "lg" }} >
+        <TableContainer bgColor="orange.50">
+          <Table variant="simple" fontSize={{ base: "sm", md: "lg" }}>
             <TableCaption>{reportTime}</TableCaption>
             <Thead>
               <Tr bgColor="orange.100">
@@ -52,7 +54,12 @@ export const ReportInfo: VFC<Props> = memo((props) => {
           * 服薬管理指導料として、3ヶ月以内に処方箋を持参かつ手帳を持参している場合は45 点。その他の場合は59点算定がされます（例外あり）。
         </Text>
       </Box>
-      <PrimaryModal isOpen={isOpen} onClose={onClose} name={""} text={"この欄にマルがついている場合は、お薬代の中に左の点数が含まれます。ついていない項目は、処方箋の内容等によって算定されるものです。"} />
+      <PrimaryModal
+        isOpen={isOpen}
+        onClose={onClose}
+        name={""}
+        text={"この欄にマルがついている場合は、お薬代の中に左の点数が含まれます。ついていない項目は、処方箋の内容等によって算定されるものです。"}
+      />
     </>
   );
 });

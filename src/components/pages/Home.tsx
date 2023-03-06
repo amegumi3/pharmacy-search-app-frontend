@@ -8,6 +8,7 @@ import { Box } from "@chakra-ui/react";
 export const Home: VFC = memo(() => {
   const { currentUser, isSignedIn } = useContext(AuthContext);
   const [searchWord, setSearchWord] = useState<string>("");
+  
   return (
     <Box mb={100}>
       <SearchArea name={isSignedIn && currentUser ? "管理者" : ""} searchWord={searchWord} setSearchWord={setSearchWord} />

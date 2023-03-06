@@ -10,11 +10,13 @@ type Props = {
 };
 
 export const FeatureLists: VFC<Props> = memo((props) => {
+  const { features } = props;
   const { onOpen, isOpen, onClose } = useDisclosure();
+
   const onClickButton = () => {
     onOpen();
   };
-  const { features } = props;
+  
   return (
     <Flex m={3} fontSize={{ base: "sm", md: "md" }}>
       {features.length > 0 ? (

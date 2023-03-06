@@ -6,7 +6,7 @@ import { useCallback, useContext } from "react";
 export const useCurrentUser = () => {
   const { setIsSignedIn, setCurrentUser } = useContext(AuthContext);
 
-  const getCurrentUser = () => {
+  const getCurrentUser = useCallback(() => {
     if (!Cookies.get("_access_token") || !Cookies.get("_client") || !Cookies.get("_uid")) return;
     return client.get("/auth/sessions", {
       headers: {
@@ -15,7 +15,7 @@ export const useCurrentUser = () => {
         uid: Cookies.get("_uid"),
       },
     });
-  };
+  }, []);
 
   const handleGetCurrentUser = useCallback(async () => {
     try {
@@ -23,7 +23,6 @@ export const useCurrentUser = () => {
       if (res?.data.isLogin === true) {
         setIsSignedIn(true);
         setCurrentUser(res?.data.data);
-
         console.log(res?.data.data);
       } else {
         console.log("ユーザーがいません");
@@ -31,7 +30,6 @@ export const useCurrentUser = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [setCurrentUser, setIsSignedIn]);
-
+  }, [getCurrentUser, setCurrentUser, setIsSignedIn]);
   return { handleGetCurrentUser };
 };

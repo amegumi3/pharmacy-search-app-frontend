@@ -11,7 +11,7 @@ export const useSignOut = () => {
   const { setIsSignedIn } = useContext(AuthContext);
   const { showMessage } = useMessage();
 
-  const signOut = () => {
+  const signOut = useCallback(() => {
     return client.delete("auth/sign_out", {
       headers: {
         "access-token": Cookies.get("_access_token"),
@@ -19,7 +19,7 @@ export const useSignOut = () => {
         uid: Cookies.get("_uid"),
       },
     });
-  };
+  }, []);
 
   const handleSignOut = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {
@@ -40,7 +40,7 @@ export const useSignOut = () => {
         console.log(err);
       }
     },
-    [history, setIsSignedIn, showMessage]
+    [history, setIsSignedIn, showMessage, signOut]
   );
   return { handleSignOut };
 };

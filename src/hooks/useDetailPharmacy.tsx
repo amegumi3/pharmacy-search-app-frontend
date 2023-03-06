@@ -1,12 +1,12 @@
 import { useCallback, useState } from "react";
-
 import { useMessage } from "./useMessage";
+
 import { show } from "lib/api/pharmacy";
-import { Report } from "types/Report";
+import { Report } from "types/report";
 
 export const useDetailPharmacy = (id: number) => {
-  const [reportList, setReportList] = useState<Array<Report | null>>([]);
   const { showMessage } = useMessage();
+  const [reportList, setReportList] = useState<Array<Report | null>>([]);
 
   const getReports = useCallback(async () => {
     console.log(id);

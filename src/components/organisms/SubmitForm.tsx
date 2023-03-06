@@ -10,6 +10,7 @@ type Props = {
 
 export const SubmitForm: VFC<Props> = memo((props) => {
   const { children, title } = props;
+  
   return (
     <CenterBox>
       <Heading textAlign="center">{title}</Heading>

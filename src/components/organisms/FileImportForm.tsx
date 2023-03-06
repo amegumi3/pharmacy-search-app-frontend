@@ -15,6 +15,7 @@ type Props = {
 
 export const FileImportForm: VFC<Props> = memo((props) => {
   const { title, text, onChange, submit, disabled } = props;
+  
   return (
     <TitleCard title={title} baseSize={"3xl"} overSize={"4xl"} spacing={2}>
       <Stack spacing={6} py={4}>

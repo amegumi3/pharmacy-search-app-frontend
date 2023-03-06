@@ -16,8 +16,8 @@ type Props = {
 
 export const SearchArea: VFC<Props> = memo((props) => {
   const { searchWord, setSearchWord, name } = props;
-  const [selectMenu, setSelectMenu] = useState("周辺スポットから");
   const { getPharmacies } = useSearchPharmacies();
+  const [selectMenu, setSelectMenu] = useState("周辺スポットから");
   const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => setSearchWord(e.target.value);
   const onClickSearch = () => getPharmacies(searchWord, selectMenu);
 
@@ -25,7 +25,7 @@ export const SearchArea: VFC<Props> = memo((props) => {
     <MainVisual bgImage={homeMainImage}>
       <Text p={4}>{name}</Text>
       <Flex p={5}>
-        <CenterBox baseHeight={"40vh"} overHeight={"20vh"}>
+        <CenterBox baseHeight={"200px"} overHeight={"250px"}>
           <Stack>
             <Heading>Search</Heading>
             <Text size="md">{selectMenu}薬局を検索 </Text>

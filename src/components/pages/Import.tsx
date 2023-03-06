@@ -13,12 +13,12 @@ import { SideMenu } from "components/molecules/SideMenu";
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 export const Import: VFC = () => {
+  const { isSignedIn } = useContext(AuthContext);
+  const { reportFile, reportSubmit, getReportFile } = useReportImport();
   const { getPharmacyFile, pharmacySubmit, pharmacyFile } = usePharmacyImport();
   const { pharmacyReportFile, pharmacyReportSubmit, getPharmacyReportFile } = usePharmacyReportImport();
-  const { reportFile, reportSubmit, getReportFile } = useReportImport();
   const { selectMenu, setSelectMenu, destroyData } = useDestroyData();
 
-  const { isSignedIn } = useContext(AuthContext);
   return (
     <>
       {isSignedIn === true ? (

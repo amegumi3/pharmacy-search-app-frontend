@@ -42,7 +42,7 @@
 <br>
 # Import
 **ファイルのインポートについて**
-* インポートするファイルは各地方厚生局からexcelファイルをダウンロードしてください。全ての都道府県のexcelファイルを取得する必要はありませんが、コード一覧表と届出受理医療機関名簿は必ずセットで用意してください。
+* インポートするファイルは各地方厚生局からexcelファイルをダウンロードしたものを使用してください。全ての都道府県のexcelファイルを取得する必要はありませんが、コード内容別一覧表と届出受理医療機関名簿はセットで必要になります。
 * 北海道の薬局情報を利用する場合は、excelファイルをダウンロード後、ファイル名をコード内容別、届出受理医療機関名簿に変更のうえインポートしてください。
 * 届出受理医療機関名簿は、最後にインポートしてください。届出一覧表とコード内容別医療機関一覧表の中間テーブルとしての役割をしています。
 
@@ -51,19 +51,19 @@
 [コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/code_ichiran.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/hokkaido/gyomu/gyomu/hoken_kikan/todokede_juri_ichiran.html)<br>
 東北:
-[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/itiran.html)
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/itiran.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/documents/201805koushin.html)<br>
 関東甲信越:
-[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/shitei.html)
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/shitei.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)<br>
 東海北陸:
-[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html)
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00349.html)<br>
 近畿:
-[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/gyomu/gyomu/hoken_kikan/shitei_jokyo_00004.html)<br>
 九州:
-[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00006.html)
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00006.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00007.html)
 
 

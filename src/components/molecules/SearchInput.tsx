@@ -13,6 +13,7 @@ type Props = {
 
 export const SearchInput: VFC<Props> = memo((props) => {
   const { value, onChange, submit, disabled, placeholder } = props;
+  
   return (
     <Flex>
       <Input value={value} onChange={onChange} placeholder={placeholder} p={4} fontSize={{ base: "xs", md: "md" }} />

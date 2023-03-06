@@ -12,12 +12,13 @@ import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
 
 export const DetailPharmacy = memo(() => {
   const { onOpen, isOpen, onClose } = useDisclosure();
+  const { selectedPharmacy } = useContext(PharmacyContext);
+  const { id } = useParams<{ id: any }>();
+  const { getReports, reportList, features } = useDetailPharmacy(id);
+
   const [selectReportCase, setSelectReportCase] = useState<string | null>(null);
   const [selectReportName, setSelectReportName] = useState<string | null>(null);
-  const { id } = useParams<{ id: any }>();
-  const { selectedPharmacy } = useContext(PharmacyContext);
 
-  const { getReports, reportList, features } = useDetailPharmacy(id);
 
   useEffect(() => {
     getReports();

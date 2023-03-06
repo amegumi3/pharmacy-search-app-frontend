@@ -10,6 +10,7 @@ type Props = {
 
 export const PrimaryCard: VFC<Props> = (props) => {
   const { children, bg = "gray.50", width = "90%", padding } = props;
+  
   return (
     <VStack mt={23}>
       <Box bg={bg} p={padding} borderRadius="md" boxShadow="lg" w={width}>

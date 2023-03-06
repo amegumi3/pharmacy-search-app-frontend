@@ -1,15 +1,15 @@
 import { ChangeEvent, useCallback, useContext, useState } from "react";
 
 import { useMessage } from "hooks/useMessage";
-import { pharmacyImoprt } from "lib/api/pharmacy";
 import { AuthContext } from "providers/AuthProvider";
+import { pharmacyImoprt } from "lib/api/pharmacy";
 
 export const usePharmacyImport = () => {
-  const [pharmacyFile, setPharmacyFile] = useState<Array<File>>([]);
-  const { showMessage } = useMessage();
   const { setLoading } = useContext(AuthContext);
+  const { showMessage } = useMessage();
+  const [pharmacyFile, setPharmacyFile] = useState<Array<File>>([]);
 
-  const getPharmacyFile = (e: ChangeEvent<HTMLInputElement>) => {
+  const getPharmacyFile = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
     if (files) {
       const pharmacyFiles = Array.from(files).filter((file) => {
@@ -31,7 +31,7 @@ export const usePharmacyImport = () => {
         });
       }
     }
-  };
+  },[showMessage]);
   const pharmacySubmit = useCallback(async () => {
     setLoading(true);
     if (pharmacyFile) {

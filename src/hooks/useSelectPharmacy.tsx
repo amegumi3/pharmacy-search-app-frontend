@@ -1,5 +1,6 @@
+import { useCallback, useContext } from "react";
+
 import { PharmacyContext } from "providers/PharmacyProvider";
-import { useContext } from "react";
 import { Pharmacy } from "types/pharmacy";
 
 type Props = {
@@ -9,7 +10,8 @@ type Props = {
 
 export const useSelectPharmacy = () => {
   const { selectedPharmacy, setSelectedPharmacy } = useContext(PharmacyContext);
-  const onSelectPharmacy = (props: Props) => {
+
+  const onSelectPharmacy = useCallback((props: Props) => {
     const { id, pharmacies } = props;
     const targetPharmacy = pharmacies.find((pharmacy) => pharmacy.id === id);
     if (targetPharmacy !== null && targetPharmacy !== undefined) {
@@ -17,6 +19,6 @@ export const useSelectPharmacy = () => {
     } else {
       console.log("見つかりませんでした");
     }
-  };
+  },[setSelectedPharmacy]);
   return { selectedPharmacy, setSelectedPharmacy, onSelectPharmacy };
 };

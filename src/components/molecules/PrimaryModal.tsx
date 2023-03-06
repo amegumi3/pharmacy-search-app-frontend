@@ -11,8 +11,6 @@ type Props = {
 export const PrimaryModal: VFC<Props> = memo((props) => {
   const { isOpen, onClose, name, text } = props;
   const lines = text?.split("<br>");
-  console.log(lines);
-  console.log(text?.includes("<br>"));
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>

@@ -10,7 +10,7 @@ export const MainVisual: VFC<Props> = memo((props) => {
   const { bgImage, children } = props;
 
   return (
-    <Box h="sm" w="100%" bgImage={bgImage} bgPosition="center" bgRepeat="no-repeat" bgSize="cover">
+    <Box h={{base: "xs", md: "sm"}} w="100%" bgImage={bgImage} bgPosition="center" bgRepeat="no-repeat" bgSize="cover">
       {children}
     </Box>
   );

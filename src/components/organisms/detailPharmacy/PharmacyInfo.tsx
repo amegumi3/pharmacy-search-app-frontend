@@ -1,14 +1,16 @@
 import { memo, useCallback, useEffect, VFC } from "react";
 import { Box, Link, Flex, Heading, Stack, Text, Tag } from "@chakra-ui/react";
 import { useHistory } from "react-router-dom";
+
 import { Pharmacy } from "types/pharmacy";
 import { useMessage } from "hooks/useMessage";
 
 export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
   const { name, tel, postalCode, adress, shuttered } = props;
   const history = useHistory();
-  const onClickBack = useCallback(() => history.goBack(), [history]);
   const { showMessage } = useMessage();
+  
+  const onClickBack = useCallback(() => history.goBack(), [history]);
 
   useEffect(() => {
     if (shuttered) {

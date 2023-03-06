@@ -11,6 +11,7 @@ type Props = {
 
 export const TitleCard: VFC<Props> = memo((props) => {
   const { title, children, baseSize = "xl", overSize = "3xl", spacing = 9 } = props;
+  
   return (
     <WrapItem>
       <Center bg="white" p={8} borderRadius="md" w={{ base: "350px", md: "700px" }}>

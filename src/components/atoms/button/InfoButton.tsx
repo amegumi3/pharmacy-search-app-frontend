@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { FaInfoCircle} from "react-icons/fa";
+import { FaInfoCircle } from "react-icons/fa";
 
 type Props = {
   show: () => void;
@@ -7,6 +7,7 @@ type Props = {
 
 export const InfoButton: VFC<Props> = (props) => {
   const { show } = props;
+  
   return (
     <button>
       <FaInfoCircle onClick={show} size={12} />

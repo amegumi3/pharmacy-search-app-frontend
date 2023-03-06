@@ -7,6 +7,7 @@ type Props = {
 
 export const QuestionButton: VFC<Props> = (props) => {
   const { show } = props;
+  
   return (
     <button>
       <FaQuestionCircle onClick={show} size={12} />

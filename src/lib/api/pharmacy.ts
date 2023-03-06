@@ -1,8 +1,8 @@
 import { Pharmacy } from "types/pharmacy";
-import { Report } from "types/Report";
+import { Report } from "types/report";
 import { client } from "./client";
 
-export const index = (word: string, selectMenu: string ) => client.get<Array<Pharmacy>>(`pharmacies/?word=${word}&state=${selectMenu}`);
+export const index = (word: string, selectMenu: string) => client.get<Array<Pharmacy>>(`pharmacies/?word=${word}&state=${selectMenu}`);
 
 export const pharmacyImoprt = (formData: any) => client.post("pharmacies/pharmacy_import", formData);
 

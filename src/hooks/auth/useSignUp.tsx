@@ -1,20 +1,21 @@
-import { useMessage } from "hooks/useMessage";
+import { MouseEvent, useCallback, useContext, useState } from "react";
 import Cookies from "js-cookie";
+import { useHistory } from "react-router-dom";
+
+import { useMessage } from "hooks/useMessage";
 import { client } from "lib/api/client";
 import { AuthContext } from "providers/AuthProvider";
-import { MouseEvent, useCallback, useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 import { SignUpParams } from "types/auth";
 
 export const useSignUp = () => {
   const history = useHistory();
+  const { showMessage } = useMessage();
+  const { setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [passwordConfirmation, setPasswordConfirmation] = useState<string>("");
-  const { showMessage } = useMessage();
 
   const onCLickSignIn = useCallback(() => history.push("/signin"), [history]);
-  const { setIsSignedIn, setCurrentUser, setLoading } = useContext(AuthContext);
 
   const handleSubmit = useCallback(
     async (e: MouseEvent<HTMLButtonElement>) => {

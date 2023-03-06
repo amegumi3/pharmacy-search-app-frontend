@@ -11,6 +11,7 @@ type Props = {
 
 export const PrimaryImageCard: VFC<Props> = (props) => {
   const { children, image, bg, w = "98%", p } = props;
+  
   return (
     <VStack spacing={1}>
       <Box bg={bg} w={w} borderRadius="md" p={p} boxShadow="sm">

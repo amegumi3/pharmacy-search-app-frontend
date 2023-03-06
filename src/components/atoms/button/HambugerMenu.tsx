@@ -1,5 +1,5 @@
 import { VFC } from "react";
-import { GiHamburgerMenu} from "react-icons/gi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 type Props = {
   show: () => void;
@@ -7,6 +7,7 @@ type Props = {
 
 export const HambugerMenu: VFC<Props> = (props) => {
   const { show } = props;
+  
   return (
     <button>
       <GiHamburgerMenu onClick={show} size={17} />

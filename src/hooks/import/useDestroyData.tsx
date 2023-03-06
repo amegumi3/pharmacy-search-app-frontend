@@ -5,8 +5,8 @@ import { AuthContext } from "providers/AuthProvider";
 import { destroyPharmacies, destroyReports } from "lib/api/pharmacy";
 
 export const useDestroyData = () => {
-  const { showMessage } = useMessage();
   const { setLoading } = useContext(AuthContext);
+  const { showMessage } = useMessage();
   const [selectMenu, setSelectMenu] = useState<string>("削除データを選択してください");
 
   const destroyData = useCallback(async () => {
