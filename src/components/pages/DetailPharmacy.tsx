@@ -39,7 +39,7 @@ export const DetailPharmacy = memo(() => {
             name={selectedPharmacy?.name}
             tel={selectedPharmacy?.tel}
             postalCode={selectedPharmacy?.postalCode}
-            adress={selectedPharmacy?.adress}
+            address={selectedPharmacy?.address}
             shuttered={selectedPharmacy?.shuttered}
           />
         ) : (

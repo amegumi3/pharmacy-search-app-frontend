@@ -6,7 +6,7 @@ import { Pharmacy } from "types/pharmacy";
 import { useMessage } from "hooks/useMessage";
 
 export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
-  const { name, tel, postalCode, adress, shuttered } = props;
+  const { name, tel, postalCode, address, shuttered } = props;
   const history = useHistory();
   const { showMessage } = useMessage();
   
@@ -42,7 +42,7 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
               <Stack spacing={1}>
                 <Box fontSize={{ base: "sm", md: "lg" }}>
                   <Text> {postalCode}</Text>
-                  <Text> {adress}</Text>
+                  <Text> {address}</Text>
                 </Box>
                 <Text fontSize={{ base: "sm", md: "lg" }}> ☎︎ {tel}</Text>
               </Stack>

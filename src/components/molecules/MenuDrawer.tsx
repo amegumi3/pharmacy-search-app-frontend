@@ -18,10 +18,10 @@ export const MenuDrawer: VFC<Props> = (props) => {
           <DrawerCloseButton _focus={{ boxShadow: "none" }} />
           <DrawerHeader textAlign="center"></DrawerHeader>
           <DrawerBody p={0}>
-            <Button onClick={onClickImport} bg={"white"} w={"100%"}>
+            <Button onClick={onClickImport} bg={"white"} w={"100%"} _focus={{ boxShadow: "none" }}>
               データ登録
             </Button>
-            <Button onClick={onClickSignOut} bg={"white"} w={"100%"}>
+            <Button onClick={onClickSignOut} bg={"white"} w={"100%"} _focus={{ boxShadow: "none" }}>
               ログアウト
             </Button>
           </DrawerBody>

@@ -2,7 +2,7 @@ export type Pharmacy = {
   id: number;
   name: string;
   postalCode: string;
-  adress: string;
+  address: string;
   tel: string;
   shuttered: boolean;
 };

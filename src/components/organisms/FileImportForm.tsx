@@ -7,7 +7,6 @@ import { TitleCard } from "components/molecules/TitleCard";
 type Props = {
   title: string;
   text: string;
-  files: File[];
   onChange: any;
   submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
   disabled: boolean;

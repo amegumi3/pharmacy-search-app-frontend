@@ -42,7 +42,7 @@ export const PharmacyCard: VFC = memo(() => {
                   <Text fontSize="md" display={{ base: "none", md: "block" }}>
                     {pharmacy.postalCode}
                   </Text>
-                  <Text fontSize={{ base: "xs", md: "md" }}>{pharmacy.adress}</Text>
+                  <Text fontSize={{ base: "xs", md: "md" }}>{pharmacy.address}</Text>
                 </Stack>
               </Stack>
             </Box>

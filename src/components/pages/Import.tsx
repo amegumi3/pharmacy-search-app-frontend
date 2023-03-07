@@ -32,7 +32,6 @@ export const Import: VFC = () => {
                 title={"STEP 1"}
                 text={"届出一覧表を添付"}
                 onChange={getReportFile}
-                files={reportFile}
                 submit={reportSubmit}
                 disabled={reportFile.length === 1 ? false : true}
               />
@@ -41,7 +40,6 @@ export const Import: VFC = () => {
                 title={"STEP 2"}
                 text={"コード内容別一覧表を添付"}
                 onChange={getPharmacyFile}
-                files={pharmacyFile}
                 submit={pharmacySubmit}
                 disabled={pharmacyFile.length > 0 ? false : true}
               />
@@ -50,7 +48,6 @@ export const Import: VFC = () => {
                 title={"STEP 3"}
                 text={"届出受理医療機関名簿を添付"}
                 onChange={getPharmacyReportFile}
-                files={pharmacyReportFile}
                 submit={pharmacyReportSubmit}
                 disabled={pharmacyReportFile.length > 0 ? false : true}
               />

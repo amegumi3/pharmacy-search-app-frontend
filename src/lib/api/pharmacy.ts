@@ -4,7 +4,7 @@ import { client } from "./client";
 
 export const index = (word: string, selectMenu: string) => client.get<Array<Pharmacy>>(`pharmacies/?word=${word}&state=${selectMenu}`);
 
-export const pharmacyImoprt = (formData: any) => client.post("pharmacies/pharmacy_import", formData);
+export const pharmacyImport = (formData: any) => client.post("pharmacies/pharmacy_import", formData);
 
 export const pharmacyReportImoprt = (formData: any) => client.post("pharmacies/pharmacy_report_import", formData);
 
