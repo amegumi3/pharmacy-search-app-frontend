@@ -14,7 +14,7 @@ export const DetailPharmacy = memo(() => {
   const { onOpen, isOpen, onClose } = useDisclosure();
   const { selectedPharmacy } = useContext(PharmacyContext);
   const { id } = useParams<{ id: any }>();
-  const { getReports, reportList, features } = useDetailPharmacy(id);
+  const { getReports, reportList, features, dateCreated } = useDetailPharmacy(id);
 
   const [selectReportCase, setSelectReportCase] = useState<string | null>(null);
   const [selectReportName, setSelectReportName] = useState<string | null>(null);
@@ -46,7 +46,8 @@ export const DetailPharmacy = memo(() => {
           <></>
         )}
         <FeatureLists features={features} />
-        <ReportInfo>
+        <ReportInfo dateCreated={dateCreated
+        }>
           {reportList.map((report: any) => (
             <Tr key={report?.id}>
               {report?.basic === true ? (

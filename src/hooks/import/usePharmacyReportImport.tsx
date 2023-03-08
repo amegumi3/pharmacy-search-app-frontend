@@ -9,28 +9,26 @@ export const usePharmacyReportImport = () => {
   const { showMessage } = useMessage();
   const [pharmacyReportFile, setPharmacyReportFile] = useState<Array<File>>([]);
 
-  const getPharmacyReportFile = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (files) {
-      const pharmacyReportFiles = Array.from(files).filter((file) => {
-        if (file.name.includes("届出受理医療機関名簿")) {
-          return true;
-        } else if (file.name.includes("shisetsu")) {
-          return true;
+  const getPharmacyReportFile = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const files = e.target.files;
+      if (files) {
+        const pharmacyReportFiles = Array.from(files).filter(
+          (file) => file.name.includes("届出受理医療機関名簿") || file.name.includes("sisetu") || file.name.includes("shisetsu")
+        );
+        if (pharmacyReportFiles.length === files.length) {
+          setPharmacyReportFile(pharmacyReportFiles);
         } else {
-          return false;
+          showMessage({
+            status: "error",
+            title:
+              "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください。全てのファイルが正しくセットされる必要があります。",
+          });
         }
-      });
-      if (pharmacyReportFiles.length === files.length) {
-        setPharmacyReportFile(pharmacyReportFiles);
-      } else {
-        showMessage({
-          status: "error",
-          title: "ファイルが正しくセットされませんでした。確認のうえもう一度添付し直してください。全てのファイルが正しくセットされる必要があります。",
-        });
       }
-    }
-  },[showMessage]);
+    },
+    [showMessage]
+  );
 
   const pharmacyReportSubmit = useCallback(async () => {
     setLoading(true);

@@ -13,7 +13,7 @@ export const usePharmacyImport = () => {
     const files = e.target.files;
     if (files) {
       const pharmacyFiles = Array.from(files).filter(file =>
-        file.name.includes("コード内容別一覧表") || (file.name.includes("yakkyoku") && !file.name.includes("shisetsu")) 
+        file.name.includes("コード内容別") || (file.name.includes("yakkyoku") && (!file.name.includes("shisetsu") || !file.name.includes("sisetu"))  ) 
       );
       if (pharmacyFiles.length === files.length) {
         setPharmacyFile(pharmacyFiles);

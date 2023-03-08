@@ -2,7 +2,7 @@ import { Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOve
 import { memo, VFC } from "react";
 
 type Props = {
-  name: string | null;
+  name?: string | null;
   text: string | null;
   isOpen: boolean;
   onClose: () => void;
@@ -17,7 +17,7 @@ export const PrimaryModal: VFC<Props> = memo((props) => {
       <ModalOverlay>
         <ModalContent>
           <ModalHeader>{name}</ModalHeader>
-          <ModalCloseButton />
+          <ModalCloseButton _focus={{ boxShadow: "none" }} />
           <ModalBody>
             {lines?.map((line, index) => (
               <Text key={index}>{line}</Text>

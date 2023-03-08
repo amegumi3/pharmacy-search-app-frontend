@@ -14,5 +14,6 @@ export const PharmacyProvider = (props: { children: ReactNode }) => {
   const { children } = props;
   const [pharmacies, setPharmacies] = useState<Array<Pharmacy>>([]);
   const [selectedPharmacy, setSelectedPharmacy] = useState<Pharmacy | null>(null);
+  
   return <PharmacyContext.Provider value={{ pharmacies, setPharmacies, selectedPharmacy, setSelectedPharmacy }}>{children}</PharmacyContext.Provider>;
 };

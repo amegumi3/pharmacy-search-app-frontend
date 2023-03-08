@@ -55,7 +55,7 @@
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tohoku/gyomu/gyomu/hoken_kikan/documents/201805koushin.html)<br>
 関東甲信越:
 [コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/shitei.html)・
-[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)<br>
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kantoshinetsu/chousa/kijyun.html)<br>
 東海北陸:
 [コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00287.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/tokaihokuriku/newpage_00349.html)<br>
