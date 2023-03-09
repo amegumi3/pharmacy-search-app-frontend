@@ -3,48 +3,45 @@
 薬局を検索し比較検討できるアプリです。<br>
 
 地方厚生局から必要なエクセルファイルをダウンロードし、そのファイルをインポートすることで検索することができるようになります。
-（ファイルをインポートするにはアカウント登録が必要です。<br>
+（ファイルをインポートするにはアカウント登録が必要です。）<br><br>
+<div align="center">
 
-![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
+  ![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
+</div><br>
 
 物価高騰が続き、今まで以上に節約に意識が向くようになりました。<br>
-今までは病院から一番近くの薬局に行っていましたが、お薬代が安くすむ薬局でお薬を手にいれることができれば、節約になると思い作成しました。
+今までは病院から一番近くの薬局に行っていましたが、お薬代が安くすむ薬局でお薬を手にいれることができれば、節約になると思い作成しました。<br><br>
 
 # Feature
 **1. キーワード周辺の薬局探し**<br>
-キーワード付近の薬局を探すことができます。住所や薬局名から検索することも可能です。
-<br>
-<br>
+キーワード付近の薬局を探すことができます。住所や薬局名から検索することも可能です。<br><br>
 **2. お薬代の節約ができる**<br>
 詳細ページで各薬局の地方厚生局への届出情報を確認することができ、
-届出の合計点数が低い薬局を選択することで、お薬代を節約することができます。（* 関連通知等により表記のものと異なる可能性があるため、あくまで参考としての活用となります。）
-<br>
-<br>
+届出の合計点数が低い薬局を選択することで、お薬代を節約することができます。（* 関連通知等により表記のものと異なる可能性があるため、あくまで参考としての活用となります。）<br><br>
 **ex.**<br>
 下の画像ではA薬局とB薬局で93点の差があります。
-窓口での負担割合を３割とした場合、B薬局を選択することで270円ほど節約になります。
-<br>
+窓口での負担割合を３割とした場合、B薬局を選択することで270円ほど節約になります。<br>
 ＜A薬局＞
 ![スクリーンショット 2023-03-01 21 15 10](https://user-images.githubusercontent.com/102279858/222136646-a5382c5c-2102-43e0-8a37-c696f55fdd58.png)
 ＜B薬局＞
-![スクリーンショット 2023-03-01 21 26 35](https://user-images.githubusercontent.com/102279858/222139059-316c09e0-67ce-4622-893d-8dc5ae399f1d.png)
-<br>
-<br>
-**3. 通常とは違った視点でみる薬局の特徴**
-<br>
-届出要件を基に独自で薬局の特徴を設定しました。地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。
-<br>
-<br>
-# Require
+![スクリーンショット 2023-03-01 21 26 35](https://user-images.githubusercontent.com/102279858/222139059-316c09e0-67ce-4622-893d-8dc5ae399f1d.png)<br><br>
+**3. 通常とは違った視点でみる薬局の特徴**<br>
+届出要件を基に独自で薬局の特徴を設定しました。地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。<br><br>
 
-このアプリを動かすためにはバックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)も同時に利用してください。
-<br>
-<br>
+# Require
+このアプリを動かすためにはバックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)と合わせてご利用ください。<br><br>
 # Import
-**ファイルのインポートについて**
-* インポートするファイルは各地方厚生局からexcelファイルをダウンロードしたものを使用してください。全ての都道府県のexcelファイルを取得する必要はありませんが、コード内容別一覧表と届出受理医療機関名簿はセットで必要になります。
-* 北海道の薬局情報を利用する場合は、excelファイルをダウンロード後、ファイル名をコード内容別、届出受理医療機関名簿に変更のうえインポートしてください。
+**ファイルのインポートについて**<br>
+ファイルの登録フォームから、届出一覧表・コード内容別一覧表・届出受理医療機関名簿の計３種類のファイルをインポートする必要があります。<br><br>
+**1. 届出一覧表について**<br>
+  下記のファイルを添付し、インポートしてください。<br>
+  [届出一覧表.xlsx](https://github.com/amegumi3/pharmacy-search-app-backend/files/10926474/default.xlsx)<br><br>
+**2. コード内容別一覧表・届出受理医療機関名簿について**<br>
+* 下記のリンクからexcelファイルをダウンロードしたものをご利用ください。全都道府県のexcelファイルを取得する必要はありませんが、コード内容別一覧表と届出受理医療機関名簿はセットで必要になります。<br>
+* 北海道の薬局情報を利用される場合は、excelファイルをダウンロード後、ファイル名をコード内容別知覧表、届出受理医療機関名簿に変更のうえインポートしてください。<br>
 * 届出受理医療機関名簿は、最後にインポートしてください。届出一覧表とコード内容別医療機関一覧表の中間テーブルとしての役割をしています。
+* コード内容別一覧表をインポートする際、バックエンド側でYahoo!ジオコーダーAPIを使用した通信を行います。利用回数の上限が１日５万アクセスまでとされているため、全国の薬局を登録しようとする際等は複数日に分けて対応してください（全国の薬局数は約６万件）。<br>
+参考：[YOOPに関するよくある質問](https://developer.yahoo.co.jp/webapi/map/faq.html)
 
 **excelファイルのリンク**<br>
 北海道:
@@ -62,13 +59,19 @@
 近畿:
 [コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kinki/tyousa/shinkishitei.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kinki/gyomu/gyomu/hoken_kikan/shitei_jokyo_00004.html)<br>
+中国:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/chugokushikoku/chousaka/iryoukikanshitei.html)・
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/chugokushikoku/chousaka/shisetsukijunjuri.html)<br>
+四国:
+[コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/shikoku/gyomu/gyomu/hoken_kikan/shitei/index.html)・
+[届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/shikoku/gyomu/gyomu/hoken_kikan/shitei/index.html)<br>
 九州:
 [コード内容別医療機関一覧表](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00006.html)・
 [届出受理医療機関名簿](https://kouseikyoku.mhlw.go.jp/kyushu/gyomu/gyomu/hoken_kikan/index_00007.html)
 
 
 # Reference
-
+保険医療制度の部分については、以下の資料を参考に作成しました。
 * 日本薬剤師会作成、調剤報酬点数表
 https://www.nichiyaku.or.jp/assets/uploads/pharmacy-info/2022/1001-list.pdf
 * 調剤報酬点数表
