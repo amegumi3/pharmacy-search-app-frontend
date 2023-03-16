@@ -3,7 +3,7 @@
 薬局を検索し比較検討できるアプリです。<br>
 
 必要なエクセルファイルをインポートすることで検索することができるようになります。
-（ファイルをインポートするにはアカウント登録が必要です。）<br><br>
+（*事前に"http://localhost:3000/signup"からアカウント登録が必要です。）<br><br>
 <div align="center">
 
   ![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
@@ -29,7 +29,8 @@
 届出要件を基に独自で薬局の特徴を設定しました。地域医療に貢献している薬局など、通常とはちがった視点で薬局を選ぶことができます。<br><br>
 
 # Require
-このアプリを動かすためにはバックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)と合わせてご利用ください。<br><br>
+このアプリを動かすためにはバックエンドを同時に起動する必要があります。[こちら](https://github.com/amegumi3/pharmacy-search-app-backend)と合わせてご利用ください。<br>
+また、このアプリは"http://localhost:3000"で起動することによって、バックエンドと通信することができるようになっています。<br><br>
 
 # Import
 **ファイルのインポートについて**<br>
