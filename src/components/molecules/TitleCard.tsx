@@ -7,16 +7,17 @@ type Props = {
   baseSize?: string;
   overSize?: string;
   spacing?: number;
+  color?: string;
 };
 
 export const TitleCard: VFC<Props> = memo((props) => {
-  const { title, children, baseSize = "xl", overSize = "3xl", spacing = 9 } = props;
+  const { title, children, baseSize = "xl", overSize = "3xl", spacing = 9, color="pink" } = props;
   
   return (
     <WrapItem>
       <Center bg="white" p={8} borderRadius="md" w={{ base: "350px", md: "700px" }}>
         <Stack pb={6} spacing={spacing}>
-          <Heading textAlign="center" color="pink" fontSize={{ base: baseSize, md: overSize }}>
+          <Heading textAlign="center" color={color} fontSize={{ base: baseSize, md: overSize }}>
             {title}
           </Heading>
           {children}
