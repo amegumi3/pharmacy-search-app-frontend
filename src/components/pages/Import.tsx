@@ -21,52 +21,56 @@ export const Import: VFC = () => {
 
   return (
     <>
-      {isSignedIn === true ? (
-        <Box mb={100}>
-          <Flex justify="center" mt={42} mb={3}>
-            <Heading fontSize={{ base: "xl", md: "3xl" }}>ファイル登録フォーム</Heading>
-          </Flex>
-          <Flex alignItems="center" justify="center">
-            <Wrap justify="center" alignItems="center" spacing={8} m={5} w="xsm">
-              <FileImportForm
-                title={"STEP 1"}
-                text={"届出一覧表を添付"}
-                onChange={getReportFile}
-                submit={reportSubmit}
-                disabled={reportFile.length === 1 ? false : true}
-              />
+      {process.env.REACT_APP_ENV === "local" ? (
+        isSignedIn === true ? (
+          <Box mb={100}>
+            <Flex justify="center" mt={42} mb={3}>
+              <Heading fontSize={{ base: "xl", md: "3xl" }}>ファイル登録フォーム</Heading>
+            </Flex>
+            <Flex alignItems="center" justify="center">
+              <Wrap justify="center" alignItems="center" spacing={8} m={5} w="xsm">
+                <FileImportForm
+                  title={"STEP 1"}
+                  text={"届出一覧表を添付"}
+                  onChange={getReportFile}
+                  submit={reportSubmit}
+                  disabled={reportFile.length === 1 ? false : true}
+                />
 
-              <FileImportForm
-                title={"STEP 2"}
-                text={"コード内容別一覧表を添付"}
-                onChange={getPharmacyFile}
-                submit={pharmacySubmit}
-                disabled={pharmacyFile.length > 0 ? false : true}
-              />
+                <FileImportForm
+                  title={"STEP 2"}
+                  text={"コード内容別一覧表を添付"}
+                  onChange={getPharmacyFile}
+                  submit={pharmacySubmit}
+                  disabled={pharmacyFile.length > 0 ? false : true}
+                />
 
-              <FileImportForm
-                title={"STEP 3"}
-                text={"届出受理医療機関名簿を添付"}
-                onChange={getPharmacyReportFile}
-                submit={pharmacyReportSubmit}
-                disabled={pharmacyReportFile.length > 0 ? false : true}
-              />
+                <FileImportForm
+                  title={"STEP 3"}
+                  text={"届出受理医療機関名簿を添付"}
+                  onChange={getPharmacyReportFile}
+                  submit={pharmacyReportSubmit}
+                  disabled={pharmacyReportFile.length > 0 ? false : true}
+                />
 
-              <TitleCard title={"データを削除する"}>
-                <HStack>
-                  <SideMenu
-                    selectMenu={selectMenu}
-                    setSelectMenu={setSelectMenu}
-                    menuList={["届出情報を削除", "薬局基本情報を削除", "すべてのデータを削除"]}
-                  />
-                  <PrimaryButton submit={destroyData} disabled={selectMenu === "削除データを選択してください" ? true : false}>
-                    削除
-                  </PrimaryButton>
-                </HStack>
-              </TitleCard>
-            </Wrap>
-          </Flex>
-        </Box>
+                <TitleCard title={"データを削除する"} color="blue.200">
+                  <HStack>
+                    <SideMenu
+                      selectMenu={selectMenu}
+                      setSelectMenu={setSelectMenu}
+                      menuList={["届出情報を削除", "薬局基本情報を削除", "すべてのデータを削除"]}
+                    />
+                    <PrimaryButton submit={destroyData} disabled={selectMenu === "削除データを選択してください" ? true : false}>
+                      削除
+                    </PrimaryButton>
+                  </HStack>
+                </TitleCard>
+              </Wrap>
+            </Flex>
+          </Box>
+        ) : (
+          <Page404 />
+        )
       ) : (
         <Page404 />
       )}
