@@ -6,7 +6,7 @@ import { FourthStepImage } from "components/molecules/images/aboutApp/FourthStep
 export const PrologueLists = [
   {
     title: "近くの薬局を探してみよう",
-    text: "近くのスポットを入力することで、その周辺にある薬局を探すことができます。",
+    text: "近くのスポットを入力することで、その周辺にある薬局を探すことができます。住所や薬局名から薬局を検索することも可能です。",
     image: FirstStepImage,
   },
   {
