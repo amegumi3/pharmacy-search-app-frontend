@@ -46,6 +46,9 @@ export const ReportInfo: VFC<Props> = memo((props) => {
 
       <Box ml={22} mt={22}>
         <Text fontSize={{ base: "12px", md: "15px" }}>
+          * 一覧の中に調剤基本料がない場合は、特別調剤基本料として７点が算定されます。
+        </Text>
+        <Text fontSize={{ base: "12px", md: "15px" }}>
           * 経過措置の都合上、地域支援体制加算が2つ存在する可能性がありますが、令和5年3月31日までは、基本的に番号の若いものが算定されます。
         </Text>
         <Text fontSize={{ base: "12px", md: "15px" }}>
