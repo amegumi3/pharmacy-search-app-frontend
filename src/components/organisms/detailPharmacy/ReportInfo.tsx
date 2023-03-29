@@ -4,6 +4,7 @@ import { memo, ReactNode, VFC } from "react";
 import { InfoButton } from "components/atoms/button/InfoButton";
 import { PrimaryCard } from "components/atoms/form/PrimaryCard";
 import { PrimaryModal } from "components/molecules/PrimaryModal";
+import { reportNotions } from "lib/reportNotions";
 
 type Props = {
   children: ReactNode;
@@ -45,16 +46,12 @@ export const ReportInfo: VFC<Props> = memo((props) => {
       </PrimaryCard>
 
       <Box ml={22} mt={22}>
-        <Text fontSize={{ base: "12px", md: "15px" }}>
-          * 一覧の中に調剤基本料がない場合は、特別調剤基本料として７点が算定されます。
-        </Text>
-        <Text fontSize={{ base: "12px", md: "15px" }}>
-          * 経過措置の都合上、地域支援体制加算が2つ存在する場合がありますが、令和5年3月31日までは番号の若いものが算定されることが予想されます。<br/>（両方算定されることはありません。）
-        </Text>
-        <Text fontSize={{ base: "12px", md: "15px" }}>
-          * 服薬管理指導料として、3ヶ月以内に処方箋を持参かつ手帳を持参している場合は45 点。その他の場合は59点算定がされます（例外あり）。
-        </Text>
-        <Text fontSize={{ base: "12px", md: "15px" }}>* 調剤報酬点数表に記載されている届出のみ表示しています。</Text>
+        {reportNotions.map((notion, index) => (
+          <Text fontSize={{ base: "12px", md: "15px" }} key={index}>
+            {notion}
+          </Text>
+        ))}
+        <Text fontSize={{ base: "12px", md: "15px" }}></Text>
       </Box>
       <PrimaryModal
         isOpen={isOpen}
