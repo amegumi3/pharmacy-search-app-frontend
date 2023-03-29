@@ -40,7 +40,7 @@ export const SearchArea: VFC<Props> = memo((props) => {
                 submit={onClickSearch}
                 placeholder={
                   selectMenu === "周辺スポットから"
-                    ? "例：　〇〇市立□□小学校"
+                    ? "例：〇〇市立□□小学校"
                     : selectMenu === "薬局名から"
                     ? "薬局名を入力"
                     : selectMenu === "住所から"
