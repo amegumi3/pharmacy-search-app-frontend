@@ -3,7 +3,7 @@
 薬局を検索し比較検討できるアプリです。<br>
 
 必要なエクセルファイルをインポートすることで検索することができるようになります。
-（*事前にhttp://localhost:3000/signupからアカウント登録が必要です。）<br><br>
+（*事前にlocalhost:3000/signupからアカウント登録が必要です。）<br><br>
 <div align="center">
 
   ![Read_me用_AdobeExpress](https://user-images.githubusercontent.com/102279858/222644426-2408183f-828e-413a-9892-c31f966448ed.gif)
