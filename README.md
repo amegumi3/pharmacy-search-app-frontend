@@ -87,6 +87,6 @@ https://www.mhlw.go.jp/content/12404000/000907836.pdf
 * 令和４年度調剤報酬改定の概要
 https://www.mhlw.go.jp/content/12400000/000911825.pdf
 * 特掲診療料の施設基準等及びその届出に関する手続きの取扱いについて
-https://www.mhlw.go.jp/content/12404000/000984052.pdf
+https://www.mhlw.go.jp/content/12404000/001080631.pdf
 * 平成２４年度調剤報酬改定及び薬剤関連の診療報酬改定の概要
 https://www.mhlw.go.jp/bunya/iryouhoken/iryouhoken15/dl/h24_01-06-1.pdf
