@@ -9,7 +9,7 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
   const { name, tel, postalCode, address, shuttered } = props;
   const history = useHistory();
   const { showMessage } = useMessage();
-  
+
   const onClickBack = useCallback(() => history.goBack(), [history]);
 
   useEffect(() => {
@@ -41,8 +41,8 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
             <Box>
               <Stack spacing={1}>
                 <Box fontSize={{ base: "sm", md: "lg" }}>
-                  <Text> {postalCode}</Text>
-                  <Text> {address}</Text>
+                  <Text>{postalCode}</Text>
+                  <Text>{address}</Text>
                 </Box>
                 <Text fontSize={{ base: "sm", md: "lg" }}> ☎︎ {tel}</Text>
               </Stack>

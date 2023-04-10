@@ -3,19 +3,20 @@ import { useMessage } from "./useMessage";
 
 import { show } from "lib/api/pharmacy";
 import { Report } from "types/report";
+import { Pharmacy } from "types/pharmacy";
 
 export const useDetailPharmacy = (id: number) => {
   const { showMessage } = useMessage();
   const [reportList, setReportList] = useState<Array<Report | null>>([]);
+  const [nearPharmacies, setNearPharmacies] = useState<Array<Pharmacy | null>>([]);
   const [dateCreated, setDateCreated] = useState<string | null>(null);
   const getReports = useCallback(async () => {
-    console.log(id);
     try {
       const res = await show(id);
       const result = res.data;
       setReportList(result.reports);
       setDateCreated(result.dateCreated);
-      console.log(res);
+      setNearPharmacies(result.nearPharmacy)
       if (result.reports.length === 0) {
         showMessage({ status: "info", title: "届出している施設基準はありません" });
       }
@@ -38,5 +39,5 @@ export const useDetailPharmacy = (id: number) => {
   const set = new Set(featureList);
   const features: Array<string | undefined> = Array.from(set);
 
-  return { getReports, reportList, features, dateCreated };
+  return { getReports, reportList, features, dateCreated, nearPharmacies };
 };
