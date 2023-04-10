@@ -24,14 +24,14 @@ export const NearPharmacy: VFC<Props> = memo((props) => {
               <Wrap spacing="30px" justify="center">
                 {nearPharmacies.map((pharmacy) => (
                   <WrapItem key={pharmacy?.id} bg="orange.100" p={5} borderRadius="md" boxShadow="md" _hover={{ boxShadow: "none" }}>
-                    <Box w="140px" _hover={{ opacity: 0.5, cursor: "pointer" }} onClick={() => onClick(pharmacy?.id)}>
+                    <Box w="150px" _hover={{ opacity: 0.8, cursor: "pointer" }} onClick={() => onClick(pharmacy?.id)}>
                       <Stack spacing={5} pb={2}>
                         <Flex justify="center">
                           <Image src={pharmacyImage} w="100px" />
                         </Flex>
-                        <Text textAlign="center" fontSize="xs">
+                        <Heading textAlign="center" fontSize={{base: "xs", md: "sm"}}>
                           {pharmacy?.name}
-                        </Text>
+                        </Heading>
                       </Stack>
                     </Box>
                   </WrapItem>
