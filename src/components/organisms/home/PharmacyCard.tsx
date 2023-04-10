@@ -32,9 +32,7 @@ export const PharmacyCard: VFC = memo(() => {
                       <Tag colorScheme="red" size="md">
                         *休業中
                       </Tag>
-                    ) : (
-                      <></>
-                    )}
+                    ) : null}
                   </Heading>
                 </Box>
 

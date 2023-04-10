@@ -9,9 +9,9 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
   const { name, tel, postalCode, address, shuttered } = props;
   const history = useHistory();
   const { showMessage } = useMessage();
-
-  const onClickBack = useCallback(() => history.goBack(), [history]);
-
+  
+  const onClickHome = useCallback(() => history.push("/"), [history]);
+ 
   useEffect(() => {
     if (shuttered) {
       showMessage({ status: "info", title: "休業中です" });
@@ -21,8 +21,8 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
   return (
     <Box>
       <Flex justify="end" mr={4} mt={2}>
-        <Link onClick={onClickBack} fontSize={{ base: "sm", md: "lg" }}>
-          戻る
+        <Link onClick={onClickHome} fontSize={{ base: "sm", md: "lg" }}>
+          トップに戻る
         </Link>
       </Flex>
       <Box ml={23}>
@@ -30,9 +30,7 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
           <Tag colorScheme="red" size="md">
             *休業中
           </Tag>
-        ) : (
-          <></>
-        )}
+        ) : null}
         <Flex justifyContent="space-between">
           <Flex direction="column">
             <Heading my={23} fontSize={{ base: "2xl", md: "4xl" }}>

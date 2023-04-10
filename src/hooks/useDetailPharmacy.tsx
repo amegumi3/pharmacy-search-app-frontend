@@ -5,12 +5,12 @@ import { show } from "lib/api/pharmacy";
 import { Report } from "types/report";
 import { Pharmacy } from "types/pharmacy";
 
-export const useDetailPharmacy = (id: number) => {
+export const useDetailPharmacy = () => {
   const { showMessage } = useMessage();
   const [reportList, setReportList] = useState<Array<Report | null>>([]);
   const [nearPharmacies, setNearPharmacies] = useState<Array<Pharmacy | null>>([]);
   const [dateCreated, setDateCreated] = useState<string | null>(null);
-  const getReports = useCallback(async () => {
+  const getReports = useCallback(async (id: number) => {
     try {
       const res = await show(id);
       const result = res.data;
@@ -24,7 +24,7 @@ export const useDetailPharmacy = (id: number) => {
       console.log(err);
       showMessage({ status: "error", title: "表示に失敗しました" });
     }
-  }, [id, setDateCreated, showMessage]);
+  }, [setDateCreated, showMessage]);
 
   // 特徴を表示するための処理
   const featureList: Array<string | undefined> = [];
