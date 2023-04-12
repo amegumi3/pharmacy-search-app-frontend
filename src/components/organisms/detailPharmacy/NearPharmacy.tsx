@@ -1,12 +1,12 @@
 import { memo, VFC } from "react";
-import { Box, Flex, Heading, Image, Stack, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import { Box, Flex, Heading, Image, Stack, Wrap, WrapItem } from "@chakra-ui/react";
 
 import { pharmacyImage } from "lib/imageLink";
 import { Pharmacy } from "types/pharmacy";
 
 type Props = {
   nearPharmacies: Array<Pharmacy | null>;
-  onClick?: any;
+  onClick: (id: number | undefined) => void
 };
 
 export const NearPharmacy: VFC<Props> = memo((props) => {
@@ -29,7 +29,7 @@ export const NearPharmacy: VFC<Props> = memo((props) => {
                         <Flex justify="center">
                           <Image src={pharmacyImage} w="100px" />
                         </Flex>
-                        <Heading textAlign="center" fontSize={{base: "xs", md: "sm"}}>
+                        <Heading textAlign="center" fontSize={{ base: "xs", md: "sm" }}>
                           {pharmacy?.name}
                         </Heading>
                       </Stack>
