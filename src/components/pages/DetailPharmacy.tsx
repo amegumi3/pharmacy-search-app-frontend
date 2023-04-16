@@ -11,6 +11,7 @@ import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
 import { NearPharmacy } from "components/organisms/detailPharmacy/NearPharmacy";
 import { useSelectPharmacy } from "hooks/useSelectPharmacy";
+import { Report } from "types/report";
 
 export const DetailPharmacy = memo(() => {
   const history = useHistory();
@@ -39,42 +40,44 @@ export const DetailPharmacy = memo(() => {
     setSelectReportName(name);
     onOpen();
   };
-
+  console.log(selectedPharmacy);
   return (
     <Box mb={100}>
       <Flex direction="column">
-        {selectedPharmacy !== null ? (
+        {selectedPharmacy?.id ? (
           <PharmacyInfo
-            name={selectedPharmacy?.name}
-            tel={selectedPharmacy?.tel}
-            postalCode={selectedPharmacy?.postalCode}
-            address={selectedPharmacy?.address}
-            shuttered={selectedPharmacy?.shuttered}
+            name={selectedPharmacy.name}
+            tel={selectedPharmacy.tel}
+            postalCode={selectedPharmacy.postalCode}
+            address={selectedPharmacy.address}
+            shuttered={selectedPharmacy.shuttered}
           />
         ) : null}
         <FeatureLists features={features} />
         <ReportInfo dateCreated={dateCreated}>
-          {reportList.map((report: any) => (
-            <Tr key={report?.id}>
-              {report?.basic === true ? (
-                <>
-                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
-                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.point}</Td>
-                  <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>
-                    ◯
-                  </Td>
-                </>
-              ) : (
-                <>
-                  <Td fontSize={{ base: "xs", md: "lg" }}>{report?.name}</Td>
-                  <Td fontSize={{ base: "xs", md: "lg" }}>
-                    {report?.point}
-                    <QuestionButton show={() => onClickButton(report?.name, report?.calcCase)} />
-                  </Td>
-                </>
-              )}
-            </Tr>
-          ))}
+          {reportList.map((report: Report | null) =>
+            report?.id ? (
+              <Tr key={report.id}>
+                {report.basic === true ? (
+                  <>
+                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
+                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.point}</Td>
+                    <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>
+                      ◯
+                    </Td>
+                  </>
+                ) : (
+                  <>
+                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
+                    <Td fontSize={{ base: "xs", md: "lg" }}>
+                      {report.point}
+                      <QuestionButton show={() => onClickButton(report.name, report.calcCase)} />
+                    </Td>
+                  </>
+                )}
+              </Tr>
+            ) : null
+          )}
         </ReportInfo>
         <NearPharmacy nearPharmacies={nearPharmacies} onClick={onClickNearPharmacy} />
       </Flex>
