@@ -40,7 +40,7 @@ export const DetailPharmacy = memo(() => {
     setSelectReportName(name);
     onOpen();
   };
-  console.log(selectedPharmacy);
+
   return (
     <Box mb={100}>
       <Flex direction="column">
