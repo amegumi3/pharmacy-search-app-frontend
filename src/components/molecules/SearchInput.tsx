@@ -1,11 +1,11 @@
 import { Flex, Input } from "@chakra-ui/react";
-import { memo, MouseEvent, VFC } from "react";
+import { ChangeEvent, memo, MouseEvent, VFC } from "react";
 
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 
 type Props = {
   value: string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
   disabled?: boolean;
   placeholder: string;

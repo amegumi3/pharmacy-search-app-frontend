@@ -9,16 +9,16 @@ import { PrimaryModal } from "components/molecules/PrimaryModal";
 import { FeatureLists } from "components/organisms/detailPharmacy/FeatureLists";
 import { PharmacyInfo } from "components/organisms/detailPharmacy/PharmacyInfo";
 import { ReportInfo } from "components/organisms/detailPharmacy/ReportInfo";
-import { NearPharmacy } from "components/organisms/detailPharmacy/NearPharmacy";
 import { useSelectPharmacy } from "hooks/useSelectPharmacy";
 import { Report } from "types/report";
+import { NearPharmacy } from "components/organisms/detailPharmacy/NearPharmacy";
 
 export const DetailPharmacy = memo(() => {
   const history = useHistory();
   const { onSelectPharmacy } = useSelectPharmacy();
   const { onOpen, isOpen, onClose } = useDisclosure();
   const { selectedPharmacy } = useContext(PharmacyContext);
-  const { id } = useParams<{ id: any }>();
+  const { id } = useParams<{ id: string }>();
   const { getReports, reportList, features, dateCreated, nearPharmacies } = useDetailPharmacy();
   const [selectReportCase, setSelectReportCase] = useState<string | null>(null);
   const [selectReportName, setSelectReportName] = useState<string | null>(null);
@@ -31,7 +31,7 @@ export const DetailPharmacy = memo(() => {
   };
 
   useEffect(() => {
-    getReports(id);
+    getReports(Number(id));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
