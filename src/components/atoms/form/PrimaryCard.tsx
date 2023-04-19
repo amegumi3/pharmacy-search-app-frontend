@@ -13,7 +13,7 @@ export const PrimaryCard: VFC<Props> = (props) => {
   
   return (
     <VStack mt={23}>
-      <Box bg={bg} p={padding} borderRadius="md" boxShadow="lg" w={width}>
+      <Box bg={bg} p={padding} borderRadius="md" boxShadow="md" w={width}>
         {children}
       </Box>
     </VStack>

@@ -1,8 +1,8 @@
 import { memo, VFC } from "react";
+import { Box, Flex, Heading, Image, Stack } from "@chakra-ui/react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Box, Flex, Heading, Image, Stack } from "@chakra-ui/react";
 
 import { pharmacyImage } from "lib/imageLink";
 import { Pharmacy } from "types/pharmacy";
@@ -16,7 +16,6 @@ export const NearPharmacy: VFC<Props> = memo((props) => {
   const { nearPharmacies, onClick } = props;
 
   const settings = {
-    arrows: true,
     swipe: true,
     touchMove: true,
     dots: true,
@@ -47,9 +46,10 @@ export const NearPharmacy: VFC<Props> = memo((props) => {
       },
     ],
   };
+
   return (
     <>
-      <Box bg="orange.50" mt={100}>
+      <Box bg="orange.50" mt={100} boxShadow="md">
         <Box mb={3} justifyContent="center">
           <Heading size="md" m={30} pt={5}>
             〜 この薬局の周辺にある薬局 〜
