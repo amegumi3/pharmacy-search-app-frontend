@@ -9,9 +9,9 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
   const { name, tel, postalCode, address, shuttered } = props;
   const history = useHistory();
   const { showMessage } = useMessage();
-  
+
   const onClickHome = useCallback(() => history.push("/"), [history]);
- 
+
   useEffect(() => {
     if (shuttered) {
       showMessage({ status: "info", title: "休業中です" });
@@ -26,11 +26,11 @@ export const PharmacyInfo: VFC<Omit<Pharmacy, "id">> = memo((props) => {
         </Link>
       </Flex>
       <Box ml={23}>
-        {shuttered ? (
+        {shuttered && (
           <Tag colorScheme="red" size="md">
             *休業中
           </Tag>
-        ) : null}
+        )}
         <Flex justifyContent="space-between">
           <Flex direction="column">
             <Heading my={23} fontSize={{ base: "2xl", md: "4xl" }}>

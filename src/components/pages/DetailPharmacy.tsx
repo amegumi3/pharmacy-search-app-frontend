@@ -44,7 +44,7 @@ export const DetailPharmacy = memo(() => {
   return (
     <Box mb={100}>
       <Flex direction="column">
-        {selectedPharmacy?.id ? (
+        {selectedPharmacy?.id && (
           <PharmacyInfo
             name={selectedPharmacy.name}
             tel={selectedPharmacy.tel}
@@ -52,31 +52,32 @@ export const DetailPharmacy = memo(() => {
             address={selectedPharmacy.address}
             shuttered={selectedPharmacy.shuttered}
           />
-        ) : null}
+        )}
         <FeatureLists features={features} />
         <ReportInfo dateCreated={dateCreated}>
-          {reportList.map((report: Report | null) =>
-            report?.id ? (
-              <Tr key={report.id}>
-                {report.basic === true ? (
-                  <>
-                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
-                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.point}</Td>
-                    <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>
-                      ◯
-                    </Td>
-                  </>
-                ) : (
-                  <>
-                    <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
-                    <Td fontSize={{ base: "xs", md: "lg" }}>
-                      {report.point}
-                      <QuestionButton show={() => onClickButton(report.name, report.calcCase)} />
-                    </Td>
-                  </>
-                )}
-              </Tr>
-            ) : null
+          {reportList.map(
+            (report: Report | null) =>
+              report?.id && (
+                <Tr key={report.id}>
+                  {report.basic === true ? (
+                    <>
+                      <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
+                      <Td fontSize={{ base: "xs", md: "lg" }}>{report.point}</Td>
+                      <Td textAlign="center" fontSize={{ base: "sm", md: "lg" }}>
+                        ◯
+                      </Td>
+                    </>
+                  ) : (
+                    <>
+                      <Td fontSize={{ base: "xs", md: "lg" }}>{report.name}</Td>
+                      <Td fontSize={{ base: "xs", md: "lg" }}>
+                        {report.point}
+                        <QuestionButton show={() => onClickButton(report.name, report.calcCase)} />
+                      </Td>
+                    </>
+                  )}
+                </Tr>
+              )
           )}
         </ReportInfo>
         <NearPharmacy nearPharmacies={nearPharmacies} onClick={onClickNearPharmacy} />
