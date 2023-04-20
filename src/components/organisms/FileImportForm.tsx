@@ -1,5 +1,5 @@
 import { Input, Stack, Text } from "@chakra-ui/react";
-import { memo, MouseEvent, VFC } from "react";
+import { ChangeEvent, memo, MouseEvent, VFC } from "react";
 
 import { PrimaryButton } from "components/atoms/button/PrimaryButton";
 import { TitleCard } from "components/molecules/TitleCard";
@@ -7,7 +7,7 @@ import { TitleCard } from "components/molecules/TitleCard";
 type Props = {
   title: string;
   text: string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   submit: (e: MouseEvent<HTMLButtonElement>) => Promise<void>;
   disabled: boolean;
 };

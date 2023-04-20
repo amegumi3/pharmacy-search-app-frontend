@@ -4,8 +4,8 @@ import { PharmacyContext } from "providers/PharmacyProvider";
 import { Pharmacy } from "types/pharmacy";
 
 type Props = {
-  id: number;
-  pharmacies: Array<Pharmacy>;
+  id: number | undefined;
+  pharmacies: Array<Pharmacy | null>;
 };
 
 export const useSelectPharmacy = () => {
@@ -13,7 +13,7 @@ export const useSelectPharmacy = () => {
 
   const onSelectPharmacy = useCallback((props: Props) => {
     const { id, pharmacies } = props;
-    const targetPharmacy = pharmacies.find((pharmacy) => pharmacy.id === id);
+    const targetPharmacy = pharmacies.find((pharmacy) => pharmacy?.id === id);
     if (targetPharmacy !== null && targetPharmacy !== undefined) {
       setSelectedPharmacy(targetPharmacy);
     } else {

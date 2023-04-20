@@ -28,12 +28,10 @@ export const PharmacyCard: VFC = memo(() => {
                 <Box>
                   <Heading fontSize={{ base: "sm", md: "xl" }}>
                     {pharmacy.name}
-                    {pharmacy.shuttered ? (
+                    {pharmacy.shuttered && (
                       <Tag colorScheme="red" size="md">
                         *休業中
                       </Tag>
-                    ) : (
-                      <></>
                     )}
                   </Heading>
                 </Box>

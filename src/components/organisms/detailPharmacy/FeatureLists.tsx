@@ -38,7 +38,7 @@ export const FeatureLists: VFC<Props> = memo((props) => {
       ) : (
         <Box></Box>
       )}
-      <PrimaryModal isOpen={isOpen} onClose={onClose} name={"特徴について"} text={"施設基準の届出状況に基づき特徴をあげています"} />
+      <PrimaryModal isOpen={isOpen} onClose={onClose} name={"特徴について"} text={"届出状況に基づき特徴をあげています"} />
     </Flex>
   );
 });

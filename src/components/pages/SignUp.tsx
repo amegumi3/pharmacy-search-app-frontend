@@ -20,12 +20,12 @@ export const SignUp: VFC = memo(() => {
           link={onCLickSignIn}
           linkName={"ログインはこちら"}
         >
-          <Input placeholder="メールアドレス" value={email} onChange={(event) => setEmail(event.target.value)} />
-          <Input placeholder="パスワード（６文字以上）" value={password} onChange={(event) => setPassword(event.target.value)} type="password" />
+          <Input placeholder="メールアドレス" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <Input placeholder="パスワード（６文字以上）" value={password} onChange={(e) => setPassword(e.target.value)} type="password" />
           <Input
             placeholder="パスワード確認"
             value={passwordConfirmation}
-            onChange={(event) => setPasswordConfirmation(event.target.value)}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
             type="password"
           />
         </UserAuthForm>

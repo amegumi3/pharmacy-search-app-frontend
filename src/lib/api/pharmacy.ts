@@ -10,8 +10,9 @@ export const pharmacyReportImoprt = (formData: any) => client.post("pharmacies/p
 
 export const reportImoprt = (formData: any) => client.post("reports/report_import", formData);
 
-export const show = (id: any) => client.get<{reports: Array<Report>, dateCreated: string | null}>(`pharmacies/${id}`);
+export const show = (id: number) => client.get<{reports: Array<Report>, dateCreated: string | null, nearPharmacy: Array<Pharmacy>}>(`pharmacies/${id}`);
 
 export const destroyPharmacies = () => client.delete("pharmacies/destroy_all");
 
 export const destroyReports = () => client.delete("reports/destroy_all");
+
